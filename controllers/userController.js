@@ -515,9 +515,6 @@ const userWithdraw = async (req, res) => {
     .json({ message: "Withdrawal has been initiated Successfully" });
 };
 
-////////////////////////////////////
-////////////reset password//////////
-////////////////////////////////////
 const resetPassword = async (req, res, next) => {
   const id = req.headers.userid;
   const password = req.body.password;
