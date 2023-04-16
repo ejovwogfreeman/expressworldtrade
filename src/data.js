@@ -4,7 +4,7 @@
 
 export const registerUser = async (user) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/register",
+    "https://expressworldtrade.onrender.com/api/users/register",
     {
       method: "POST",
       headers: {
@@ -24,13 +24,16 @@ export const registerUser = async (user) => {
 ///////////////////
 
 export const loginUser = async (user) => {
-  const res = await fetch("https://backend-tytc.onrender.com/api/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  });
+  const res = await fetch(
+    "https://expressworldtrade.onrender.com/api/users/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }
+  );
   const login = await res.json();
   return login;
 };
@@ -41,7 +44,7 @@ export const loginUser = async (user) => {
 
 export const changePassword = async (user, token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/update-user",
+    "https://expressworldtrade.onrender.com/api/users/update-user",
     {
       method: "PATCH",
       headers: {
@@ -61,7 +64,7 @@ export const changePassword = async (user, token) => {
 
 export const forgotPassword = async (user) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/forgot-password",
+    "https://expressworldtrade.onrender.com/api/users/forgot-password",
     {
       method: "POST",
       headers: {
@@ -80,7 +83,7 @@ export const forgotPassword = async (user) => {
 
 export const resetPassword = async (user, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/reset-password",
+    "https://expressworldtrade.onrender.com/api/users/reset-password",
     {
       method: "POST",
       headers: {
@@ -100,7 +103,7 @@ export const resetPassword = async (user, id) => {
 
 export const updateUser = async (user, token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/update-user",
+    "https://expressworldtrade.onrender.com/api/users/update-user",
     {
       method: "PATCH",
       headers: {
@@ -118,13 +121,16 @@ export const updateUser = async (user, token) => {
 ////////////////////////////
 
 export const getUser = async (token) => {
-  const res = await fetch("https://backend-tytc.onrender.com/api/users/user", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": token,
-    },
-  });
+  const res = await fetch(
+    "https://expressworldtrade.onrender.com/api/users/user",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    }
+  );
   const user = await res.json();
   return user;
 };
@@ -135,7 +141,7 @@ export const getUser = async (token) => {
 
 export const getTransaction = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/transaction",
+    "https://expressworldtrade.onrender.com/api/users/transaction",
     {
       method: "GET",
       headers: {
@@ -154,7 +160,7 @@ export const getTransaction = async (token) => {
 
 export const getInvestment = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/investment",
+    "https://expressworldtrade.onrender.com/api/users/investment",
     {
       method: "GET",
       headers: {
@@ -173,7 +179,7 @@ export const getInvestment = async (token) => {
 
 export const getWithdrawal = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/withdrawal",
+    "https://expressworldtrade.onrender.com/api/users/withdrawal",
     {
       method: "GET",
       headers: {
@@ -192,7 +198,7 @@ export const getWithdrawal = async (token) => {
 
 export const getDeposit = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/deposit",
+    "https://expressworldtrade.onrender.com/api/users/deposit",
     {
       method: "GET",
       headers: {
@@ -211,7 +217,7 @@ export const getDeposit = async (token) => {
 
 export const makeInvestment = async (token, invest) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/invest",
+    "https://expressworldtrade.onrender.com/api/users/invest",
     {
       method: "POST",
       headers: {
@@ -230,7 +236,7 @@ export const makeInvestment = async (token, invest) => {
 //////////////////////////////////////////
 export const makeWithdrawal = async (token, withdraw) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/withdraw",
+    "https://expressworldtrade.onrender.com/api/users/withdraw",
     {
       method: "POST",
       headers: {
@@ -249,7 +255,7 @@ export const makeWithdrawal = async (token, withdraw) => {
 //////////////////////////////////////////
 export const makeDeposit = async (token, deposit) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/deposit",
+    "https://expressworldtrade.onrender.com/api/users/deposit",
     {
       method: "POST",
       headers: {

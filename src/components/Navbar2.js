@@ -65,7 +65,7 @@ const Navbar2 = () => {
               <img
                 src={
                   UserState.profileImage && UserState.profileImage.length > 0
-                    ? `https://backend-tytc.onrender.com/${UserState.profileImage[0].link}`
+                    ? `https://expressworldtrade.onrender.com/${UserState.profileImage[0].link}`
                     : profilepic
                 }
                 height="40"

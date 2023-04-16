@@ -102,7 +102,7 @@ const Editprofile = () => {
                     ? URL.createObjectURL(userDetails.file[0])
                     : UserState.profileImage &&
                       UserState.profileImage.length > 0
-                    ? `https://backend-tytc.onrender.com/${UserState.profileImage[0].link}`
+                    ? `https://expressworldtrade.onrender.com/${UserState.profileImage[0].link}`
                     : profilepic
                 }
                 alt=""
