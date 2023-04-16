@@ -8,14 +8,14 @@ const Loader = () => {
       <img
         src={logo}
         alt=""
-        width="100px"
+        width="200px"
         style={{ display: "block", margin: "auto" }}
       />
       <img
         src={loader}
         alt="loading"
         width="100px"
-        style={{ display: "block", margin: "auto" }}
+        style={{ display: "block", margin: "auto", paddingLeft: "20px" }}
       />
     </div>
   );

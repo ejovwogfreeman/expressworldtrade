@@ -73,7 +73,7 @@ const Signup = () => {
       <div className="general-container">
         <Background text="REGISTER" />
         <div className="body">
-          <form onSubmit={handleSubmit} className="signup-form">
+          <form onSubmit={handleSubmit} className="signup-form mb-4">
             <h2>REGISTER FORM</h2>
             <div>
               <input
@@ -140,7 +140,10 @@ const Signup = () => {
             </button>
             <section style={{ marginTop: "20px" }}>
               <small>
-                Already have an account? <Link to="/login">Login</Link>
+                Already have an account?{" "}
+                <Link to="/login" style={{ color: "#ff7200" }}>
+                  Login
+                </Link>
               </small>
             </section>
           </form>

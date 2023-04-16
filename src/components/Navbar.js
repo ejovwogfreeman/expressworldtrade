@@ -10,7 +10,6 @@ import logo from "../assets/logo.png";
 import { UserContext } from "../context/UserContext";
 import Muinavbar from "./Muinavbar";
 import profilepic from "../assets/default.jpg";
-import TradingViewWidget from "./TradingViewWidget";
 
 const Navbar = () => {
   const [UserState, setUserState] = React.useContext(UserContext);

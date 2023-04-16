@@ -1,6 +1,7 @@
 .investment-container .access {
-  background-color: var(--primary);
-  border-bottom: 5px solid var(--secondary);
+  background-color: #040647;
+
+  border-bottom: 5px solid #ff7200;
   padding: 50px 8%;
   display: flex;
   justify-content: space-between;
@@ -9,23 +10,26 @@
 }
 
 .investment-container .access a {
-  border: 2px solid var(--secondary);
+  background: linear-gradient(to right, #f48b36, #ff7200);
   padding: 10px 20px;
   margin-left: 20px;
-  border-radius: 30px;
+  border-radius: 5px;
   color: white;
   transition: 0.5s ease-in-out;
-}
-
-.investment-container .access a:hover {
-  color: var(--primary);
-  background-color: var(--secondary);
 }
 
 .investment-container .how {
   text-align: center;
   padding: 10px 8%;
   margin-top: 40px;
+}
+
+.investment-container .how .icon {
+  font-size: 30px;
+}
+
+.investment-container .how h3 {
+  color: #ff7200;
 }
 
 .investment-container .how .how-grid {
@@ -43,18 +47,10 @@
   border-radius: 10px;
 }
 
-/* .investment-container .how .how-grid div:hover {
-  background-color: var(--secondary);
-  color: var(--primary);
-  border-color: var(--primary);
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
-} */
-
 .investment-container .track {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("../assets/cryptobg.jpg");
-  border-bottom: 5px solid var(--secondary);
+    url("../assets/bg1.jpg");
+  border-bottom: 5px solid #ff7200;
   background-size: cover;
   background-attachment: fixed;
   background-position: center right;
@@ -73,13 +69,13 @@
 }
 
 .investment-container .track a {
-  background-color: var(--secondary);
+  background: linear-gradient(to right, #f48b36, #ff7200);
+  color: white;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  color: var(--primary);
   transition: 0.5s ease-in-out;
 }
 

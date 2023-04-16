@@ -13,7 +13,7 @@ import Fab from "@mui/material/Fab";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import Loader from "./components/Loader";
 import ScrollToTop from "./components/ScrollToTop";
-import Payment from "./components/Payment";
+// import Payment from "./components/Payment";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
@@ -192,7 +192,7 @@ function App() {
             /> */}
               <Route exact path="*" element={<Notfound />} />
             </Routes>
-            <Payment />
+            {/* <Payment /> */}
             <Footer />
 
             <Box
@@ -201,7 +201,7 @@ function App() {
                   m: 1,
                   position: "fixed",
                   bottom: show,
-                  right: 20,
+                  right: 25,
                   transition: "all 1s",
                 },
               }}

@@ -28,7 +28,7 @@ const Contact = () => {
       <div className="general-container">
         <Background text="CONTACT" />
         <div className="body">
-          <div className="contents">
+          <div className="content">
             <div>
               <h1>GET IN TOUCH</h1>
               <p>
@@ -40,7 +40,7 @@ const Contact = () => {
                 Send a Mail: <br />
                 <span>
                   <CgMail className="icon" />
-                  financialfreedom680@gmail.com
+                  mail@expressworldtrade.option.com
                 </span>
               </p>
               <p>

@@ -65,7 +65,9 @@ const Passwordreset = () => {
             </button>
             <section style={{ marginTop: "20px" }}>
               <small>
-                <Link to="/login">Go back</Link>
+                <Link to="/login" style={{ color: "#ff7200" }}>
+                  Go back
+                </Link>
               </small>
             </section>
           </form>

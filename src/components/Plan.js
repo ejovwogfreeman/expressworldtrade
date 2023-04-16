@@ -1,142 +1,79 @@
 import React from "react";
-import { CgMail } from "react-icons/cg";
-import { MdCall } from "react-icons/md";
-import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+// import { CgMail } from "react-icons/cg";
+// import { MdCall } from "react-icons/md";
+// import { Link } from "react-router-dom";
+// import logo from "../assets/logo.png";
 import "../css/Plan.css";
+import { Link } from "react-router-dom";
+import { FaRegStarHalf, FaRegStar } from "react-icons/fa";
+import { BsStarHalf, BsStarFill } from "react-icons/bs";
 
 const Plan = () => {
   return (
     <div className="plan-container">
       <h2>
-        <span>
-          OUR AWESOME <span style={{ color: "rgb(35, 201, 216)" }}>PLANS</span>{" "}
-          <br /> <img src={logo} width="100px" />
-        </span>
+        <span>OUR PLANS</span>
       </h2>
-      <p>
-        The site is owned by financial freedom investment company. A registered
-        company for cryptocurrency investments solution. We give a chance to
-        new, dynamically developing ICO projects that bring huge profits in an
-        amazing short time. Join Us by choosing one of our plans today.
-      </p>
       <div className="plan">
         <div className="plan-box">
-          <h2>MINI</h2>
-          <p>WEEKLY 150% FOR 1 TIMES</p>
-          <h3>$ 37650</h3>
-          <div>
-            <span>
-              <p>Minimum</p>
-              <p>$300.00</p>
-            </span>
-            <span>
-              <p>Maximum</p>
-              <p>$75000.00</p>
-            </span>
-            <span>
-              <p>Per time</p>
-              <p>$56475.00</p>
-            </span>
-            <span>
-              <p>Total Return</p>
-              <p>$56475.00</p>
-            </span>
+          <div className="my-3 icon">
+            <FaRegStarHalf />
           </div>
+          <div className="plan-type">
+            <h4>MINI</h4>
+            <p>25%</p>
+          </div>
+          <div>
+            <p>$300 - $2999</p>
+            <p>PAID 10 TIMES</p>
+            <p>DAILY 25</p>
+          </div>
+          <Link>INVEST</Link>
         </div>
         <div className="plan-box">
-          <h2>SILVER</h2>
-          <p>WEEKLY 200% FOR 1 TIMES</p>
-          <h3>$ 87500</h3>
-          <div>
-            <span>
-              <p>Minimum</p>
-              <p>$75000.00</p>
-            </span>
-            <span>
-              <p>Maximum</p>
-              <p>$100000.00</p>
-            </span>
-            <span>
-              <p>Per time</p>
-              <p>$175000.00</p>
-            </span>
-            <span>
-              <p>Total Return</p>
-              <p>$175000.00</p>
-            </span>
+          <div className="my-3 icon">
+            <FaRegStar />
           </div>
+          <div className="plan-type">
+            <h4>SILVER</h4>
+            <p>35%</p>
+          </div>
+          <div>
+            <p>$3000 - $49999</p>
+            <p>PAID 10 TIMES</p>
+            <p>DAILY 35</p>
+          </div>
+          <Link>INVEST</Link>
         </div>
         <div className="plan-box">
-          <h2>GOLD</h2>
-          <p>WEEKLY 300% FOR 1 TIMES</p>
-          <h3>$ 675000</h3>
-          <div>
-            <span>
-              <p>Minimum</p>
-              <p>$10000.00</p>
-            </span>
-            <span>
-              <p>Maximum</p>
-              <p>$1250000.00</p>
-            </span>
-            <span>
-              <p>Per time</p>
-              <p>$2025000.00</p>
-            </span>
-            <span>
-              <p>Total Return</p>
-              <p>$2025000.00</p>
-            </span>
+          <div className="my-3 icon">
+            <BsStarHalf />
           </div>
+          <div className="plan-type">
+            <h4>GOLD</h4>
+            <p>45%</p>
+          </div>
+          <div>
+            <p>$50000 - $99999</p>
+            <p>PAID 10 TIMES</p>
+            <p>DAILY 45</p>
+          </div>
+          <Link>INVEST</Link>
         </div>
         <div className="plan-box">
-          <h2>PLATINUM</h2>
-          <p>WEEKLY 300% FOR 1 TIMES</p>
-          <h3>$ 675000</h3>
-          <div>
-            <span>
-              <p>Minimum</p>
-              <p>$10000.00</p>
-            </span>
-            <span>
-              <p>Maximum</p>
-              <p>$1250000.00</p>
-            </span>
-            <span>
-              <p>Per time</p>
-              <p>$2025000.00</p>
-            </span>
-            <span>
-              <p>Total Return</p>
-              <p>$2025000.00</p>
-            </span>
+          <div className="my-3 icon">
+            <BsStarFill />
           </div>
-        </div>
-      </div>
-      <div className="question">
-        <div className="first">
-          <div>
-            <h3>HAVE A QUESTION?</h3>
-            <p>WE ARE HERE TO HELP!</p>
-            <div>
-              <Link to="/">
-                <CgMail className="icon" />
-                financialfreedom680@gmail.com
-              </Link>
-              <Link to="/">
-                <MdCall className="icon" />
-                +2779 985 8789
-              </Link>
-            </div>
+          <div className="plan-type">
+            <h4>PLATINUM</h4>
+            <p>55%</p>
           </div>
-        </div>
-        <div className="second">
-          <h1>
-            10% <br />
-            REFERRAL <br />
-            COMMISSION <br />
-          </h1>
+          <div>
+            <p>$100000 - $600000</p>
+            <p>PAID 10 TIMES</p>
+            <p>DAILY 55</p>
+          </div>
+          <Link>INVEST</Link>
         </div>
       </div>
     </div>

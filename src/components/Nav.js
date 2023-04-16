@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../css/Nav.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import MobileNav from "./MobileNav";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { CgMail } from "react-icons/cg";
 import { MdCall } from "react-icons/md";
+import { UserContext } from "../context/UserContext";
 
 const Nav = () => {
+  const [UserState, setUserState] = React.useContext(UserContext);
+  // const [openButton, setOpenButton] = useState(true);
+
+  const navigate = useNavigate();
+  const Auth = () => {
+    let user = JSON.parse(localStorage.getItem("user"));
+    return user;
+  };
+
+  const userAuth = Auth();
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUserState({});
+    navigate("/");
+  };
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(!open);
@@ -54,21 +72,43 @@ const Nav = () => {
           </li>
           <li>
             <div className="dropdown">
-              <span
-                to="/about"
-                className="d-flex align-items-center"
-                style={{ cursor: "pointer", color: "white" }}
-              >
-                <span>ACCOUNT</span> <IoMdArrowDropdown />
-              </span>
-              <ul className="dropdown-items">
-                <li>
-                  <Link to="/login">REGISTER</Link>
-                </li>
-                <li>
-                  <Link to="/register">LOGIN</Link>
-                </li>
-              </ul>
+              {!userAuth ? (
+                <>
+                  <span
+                    to="/about"
+                    className="d-flex align-items-center"
+                    style={{ cursor: "pointer", color: "white" }}
+                  >
+                    <span>ACCOUNT</span> <IoMdArrowDropdown />
+                  </span>
+                  <ul className="dropdown-items">
+                    <li>
+                      <Link to="/register">REGISTER</Link>
+                    </li>
+                    <li>
+                      <Link to="/login">LOGIN</Link>
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <span
+                    to="/about"
+                    className="d-flex align-items-center"
+                    style={{ cursor: "pointer", color: "white" }}
+                  >
+                    <span>HI {UserState.username}</span> <IoMdArrowDropdown />
+                  </span>
+                  <ul className="dropdown-items">
+                    <li>
+                      <Link to="/register">DASHBOARD</Link>
+                    </li>
+                    <span onClick={logout} style={{ cursor: "pointer" }}>
+                      <span>Logout</span>
+                    </span>
+                  </ul>
+                </>
+              )}
             </div>
           </li>
         </ul>

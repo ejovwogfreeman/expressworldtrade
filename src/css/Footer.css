@@ -1,7 +1,7 @@
 .footer-container {
   text-align: center;
   color: white;
-  background-color: var(--primary);
+  background-color: #040647;
 }
 
 .footer-container .info {
@@ -16,7 +16,6 @@
 }
 
 .footer-container .info .info-box {
-  background-color: var(--primary);
   transition: 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -37,9 +36,6 @@
   .footer-container .info {
     padding-right: 10px 4%;
   }
-}
-
-@media screen and (max-width: 800px) {
   .footer-container .info .icon {
     font-size: 50px;
   }
@@ -55,7 +51,10 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+/* @media screen and (max-width: 800px) {
+} */
+
+@media screen and (max-width: 600px) {
   .footer-container .info {
     display: block;
   }
