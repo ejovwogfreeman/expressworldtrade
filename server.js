@@ -16,6 +16,12 @@ const Grid = require("gridfs-stream");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+
 let gfs, gridfsBucket;
 const conn = mongoose.connection;
 
@@ -31,12 +37,6 @@ conn.once("open", () => {
   gfs = Grid(conn.db, mongoose.mongo);
   gfs.collection("photos");
 });
-
-const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
-};
 
 app.use(cors(corsOptions));
 
