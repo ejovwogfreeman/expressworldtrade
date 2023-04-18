@@ -11,7 +11,8 @@ import { transactionContext } from "../context/transactionContext";
 import { ToastifyContext } from "../context/ToastifyContext";
 import { getUser } from "../data";
 import { TbArrowsDownUp } from "react-icons/tb";
-import loaderimg from "../assets/icons8-combo-chart.gif";
+import Loader from "../components/Loader";
+// import loaderimg from "../assets/icons8-combo-chart.gif";
 
 const Dashboard = () => {
   const [ToastifyState, setToastifyState] = React.useContext(ToastifyContext);
@@ -31,30 +32,30 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(async () => {
-    setLoading(true);
-    let user = await getUser(UserState.token);
+  // useEffect(async () => {
+  //   setLoading(true);
+  //   let user = await getUser(UserState.token);
 
-    if (user.error) {
-      setLoading(false);
-      setToastifyState({
-        ...ToastifyState,
-        message: user.message,
-        variant: "error",
-        open: true,
-      });
-      return navigate("/login");
-    }
-    localStorage.setItem("user", JSON.stringify(user));
-    setUserState(user);
+  //   if (user.error) {
+  //     setLoading(false);
+  //     setToastifyState({
+  //       ...ToastifyState,
+  //       message: user.message,
+  //       variant: "error",
+  //       open: true,
+  //     });
+  //     return navigate("/login");
+  //   }
+  //   localStorage.setItem("user", JSON.stringify(user));
+  //   setUserState(user);
 
-    setLoading(false);
-    location.state = null;
+  //   setLoading(false);
+  //   location.state = null;
 
-    if (!user.username) {
-      return navigate("/login");
-    }
-  }, [location.state]);
+  //   if (!user.username) {
+  //     return navigate("/login");
+  //   }
+  // }, [location.state]);
 
   return (
     <>
@@ -78,10 +79,7 @@ const Dashboard = () => {
             zIndex: 100,
           }}
         >
-          <p>
-            <img src={loaderimg} />
-          </p>
-          <h2>Fetching Transacions</h2>
+          <Loader />
         </div>
       ) : (
         <>
@@ -221,14 +219,14 @@ const Dashboard = () => {
                     <form action="">
                       <input
                         type="text"
-                        value={`http://localhost:3000/register/${UserState.referralId}`}
+                        value={`https://expressworldtrade.com/register/${UserState.referralId}`}
                         disabled
                       />
                       <button
                         onClick={(e) => {
                           e.preventDefault();
                           navigator.clipboard.writeText(
-                            `http://localhost:3000/register/${UserState.referralId}`
+                            `https://expressworldtrade.com/register/${UserState.referralId}`
                           );
                           setToastifyState({
                             ...ToastifyState,

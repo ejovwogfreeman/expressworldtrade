@@ -70,6 +70,65 @@ const Nav = () => {
           <li>
             <Link to="/contact">CONTACT</Link>
           </li>
+          {userAuth ? (
+            <>
+              <li>
+                <div className="dropdown">
+                  <span
+                    to="/about"
+                    className="d-flex align-items-center"
+                    style={{ cursor: "pointer", color: "white" }}
+                  >
+                    <span>INVESTMENT</span> <IoMdArrowDropdown />
+                  </span>
+                  <ul
+                    className="dropdown-items text-center"
+                    style={{ left: "-25px" }}
+                  >
+                    <li>
+                      <Link to="/register">INVESTMENT PACKAGE</Link>
+                    </li>
+                    <li>
+                      <Link to="/login">INVESTMENT HISTORY</Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <div className="dropdown">
+                  <span
+                    to="/about"
+                    className="d-flex align-items-center"
+                    style={{ cursor: "pointer", color: "white" }}
+                  >
+                    <span>TRANSACTION</span> <IoMdArrowDropdown />
+                  </span>
+                  <ul
+                    className="dropdown-items text-center"
+                    style={{ left: "-20px" }}
+                  >
+                    <li>
+                      <Link to="/register">DEPOSIT FUND</Link>
+                    </li>
+                    <li>
+                      <Link to="/register">DEPOSIT HISTORY</Link>
+                    </li>
+                    <li>
+                      <Link to="/register">WITHDRAW FUND</Link>
+                    </li>
+                    <li>
+                      <Link to="/register">WITHDRAWAL HISTORY</Link>
+                    </li>
+                    <li>
+                      <Link to="/login">TRANSACTION LOG</Link>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </>
+          ) : (
+            <></>
+          )}
           <li>
             <div className="dropdown">
               {!userAuth ? (
@@ -81,7 +140,10 @@ const Nav = () => {
                   >
                     <span>ACCOUNT</span> <IoMdArrowDropdown />
                   </span>
-                  <ul className="dropdown-items">
+                  <ul
+                    className="dropdown-items text-center"
+                    style={{ left: "-40px" }}
+                  >
                     <li>
                       <Link to="/register">REGISTER</Link>
                     </li>
@@ -99,13 +161,27 @@ const Nav = () => {
                   >
                     <span>HI {UserState.username}</span> <IoMdArrowDropdown />
                   </span>
-                  <ul className="dropdown-items">
+                  <ul
+                    className="dropdown-items text-center"
+                    style={{ left: "-40px" }}
+                  >
                     <li>
-                      <Link to="/register">DASHBOARD</Link>
+                      <Link to="/dashboard">DASHBOARD</Link>
                     </li>
-                    <span onClick={logout} style={{ cursor: "pointer" }}>
-                      <span>Logout</span>
-                    </span>
+                    <li>
+                      <Link to="/dashboard">EDIT PROFILE</Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard">CHANGE PASSWORD</Link>
+                    </li>
+                    <li>
+                      <Link to="/dashboard">GET SUPPORT</Link>
+                    </li>
+                    <li style={{ background: "black" }}>
+                      <span onClick={logout} style={{ cursor: "pointer" }}>
+                        <span>LOGOUT</span>
+                      </span>
+                    </li>
                   </ul>
                 </>
               )}

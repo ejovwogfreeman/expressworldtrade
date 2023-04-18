@@ -3,8 +3,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-  useNavigate,
+  // Navigate,
+  // useNavigate,
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -55,6 +55,7 @@ import UserComponent from "./context/UserContext";
 import Toastify from "./components/Toastify";
 import Passwordresetconfirm from "./pages/Passwordresetconfirm";
 import TransactionComponent from "./context/transactionContext";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   const [show, setShow] = useState(-100);
@@ -116,7 +117,9 @@ function App() {
                 path="/forgot-password"
                 element={<Passwordreset />}
               />
-              <Route exact path="/dashboard" element={<Dashboard />} />
+              <Route element={<ProtectedRoutes />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+              </Route>
               <Route
                 exact
                 path="/investment-package"

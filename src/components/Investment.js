@@ -11,19 +11,18 @@ const Investment = () => {
 
   return (
     <div className="investment-container">
-      <div className="access">
-        <h2>JOIN TODAY</h2>
-        <div>
-          {UserState.username ? (
-            <Link to="/dashboard">Dashboard</Link>
-          ) : (
-            <>
-              <Link to="/login">SIGN IN</Link>
-              <Link to="/register">REGISTER</Link>
-            </>
-          )}
+      {UserState.username ? (
+        <div className="access">
+          <h2>GO TO DASHBOARD</h2>
+          <Link to="/dashboard">Dashboard</Link>
         </div>
-      </div>
+      ) : (
+        <div className="access">
+          <h2>JOIN TODAY</h2>
+          <Link to="/login">SIGN IN</Link>
+          <Link to="/register">REGISTER</Link>
+        </div>
+      )}
       <div className="how">
         <h2>
           <div>

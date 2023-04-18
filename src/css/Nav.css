@@ -132,6 +132,7 @@ nav {
     padding: 20px;
     transition: 0.2s ease-in-out;
   }
+
   .mobile-nav a:hover,
   .span:hover {
     color: white;
@@ -191,6 +192,22 @@ nav {
   font-size: 14px;
 }
 
+.dropdown-items li span {
+  display: flex;
+  width: 120px;
+  background-color: black;
+  color: white;
+  margin-left: 0px;
+  justify-content: center;
+  padding: 4px;
+  font-size: 14px;
+}
+.dropdown-items li span:hover {
+  background-color: rgb(48, 38, 49);
+  color: white;
+  cursor: pointer;
+}
+
 .project-dropdown li a {
   width: 140px;
 }
@@ -229,4 +246,15 @@ nav {
 
 .dropdown-items-mobile-block li a:hover {
   background-color: rgb(70, 68, 68);
+}
+
+.logoutMobile {
+  background-color: rgba(256, 256, 256, 0.1);
+  color: white;
+  padding: 20px;
+}
+
+.logoutMobile:hover {
+  background-color: rgb(70, 68, 68);
+  color: white;
 }
