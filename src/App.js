@@ -120,40 +120,60 @@ function App() {
               <Route element={<ProtectedRoutes />}>
                 <Route path="/dashboard" element={<Dashboard />} />
               </Route>
-              <Route
-                exact
-                path="/investment-package"
-                element={<InvestmentPackage />}
-              />
-              <Route
-                exact
-                path="/investment"
-                element={<Modalinveststarter />}
-              />
-              <Route
-                exact
-                path="/investment/:plan"
-                element={<Modalinveststarter />}
-              />
-              <Route
-                exact
-                path="/investment-history"
-                element={<InvestmentHistory />}
-              />
-              <Route exact path="/deposit" element={<Deposit />} />
-              <Route
-                exact
-                path="/deposit-history"
-                element={<DepositHistory />}
-              />
-              <Route exact path="/withdraw" element={<Withdraw />} />
-              <Route
-                exact
-                path="/withdraw-history"
-                element={<WithdrawHistory />}
-              />
-              <Route exact path="/transaction" element={<Transaction />} />
-              <Route exact path="/edit-profile" element={<Editprofile />} />
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/investment-package"
+                  element={<InvestmentPackage />}
+                />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/investment"
+                  element={<Modalinveststarter />}
+                />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/investment/:plan"
+                  element={<Modalinveststarter />}
+                />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/investment-history"
+                  element={<InvestmentHistory />}
+                />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route exact path="/deposit" element={<Deposit />} />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/deposit-history"
+                  element={<DepositHistory />}
+                />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route exact path="/withdraw" element={<Withdraw />} />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/withdraw-history"
+                  element={<WithdrawHistory />}
+                />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route exact path="/transaction" element={<Transaction />} />
+              </Route>
+              <Route element={<ProtectedRoutes />}>
+                <Route exact path="/edit-profile" element={<Editprofile />} />
+              </Route>
               <Route
                 exact
                 path="/change-password"
@@ -177,11 +197,13 @@ function App() {
               element={<Modaletheriumdeposit />}
             />
             <Route exact path="/luno-deposit" element={<Modallunodeposit />} /> */}
-              <Route
-                exact
-                path="/withdraw/:method"
-                element={<Modalbankwithdraw />}
-              />
+              <Route element={<ProtectedRoutes />}>
+                <Route
+                  exact
+                  path="/withdraw/:method"
+                  element={<Modalbankwithdraw />}
+                />
+              </Route>
               {/* <Route exact path="/btc-withdraw" element={<Modalbtcwithdraw />} />
             <Route
               exact
