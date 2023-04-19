@@ -86,10 +86,10 @@ const Nav = () => {
                     style={{ left: "-25px" }}
                   >
                     <li>
-                      <Link to="/register">INVESTMENT PACKAGE</Link>
+                      <Link to="/investment-package">INVESTMENT PACKAGE</Link>
                     </li>
                     <li>
-                      <Link to="/login">INVESTMENT HISTORY</Link>
+                      <Link to="/investment-history">INVESTMENT HISTORY</Link>
                     </li>
                   </ul>
                 </div>
@@ -108,19 +108,19 @@ const Nav = () => {
                     style={{ left: "-20px" }}
                   >
                     <li>
-                      <Link to="/register">DEPOSIT FUND</Link>
+                      <Link to="/deposit">DEPOSIT FUND</Link>
                     </li>
                     <li>
-                      <Link to="/register">DEPOSIT HISTORY</Link>
+                      <Link to="/deposit-history">DEPOSIT HISTORY</Link>
                     </li>
                     <li>
-                      <Link to="/register">WITHDRAW FUND</Link>
+                      <Link to="/withdraw">WITHDRAW FUND</Link>
                     </li>
                     <li>
-                      <Link to="/register">WITHDRAWAL HISTORY</Link>
+                      <Link to="/withdraw-history">WITHDRAWAL HISTORY</Link>
                     </li>
                     <li>
-                      <Link to="/login">TRANSACTION LOG</Link>
+                      <Link to="/transaction">TRANSACTION LOG</Link>
                     </li>
                   </ul>
                 </div>
@@ -169,13 +169,13 @@ const Nav = () => {
                       <Link to="/dashboard">DASHBOARD</Link>
                     </li>
                     <li>
-                      <Link to="/dashboard">EDIT PROFILE</Link>
+                      <Link to="/edit-profile">EDIT PROFILE</Link>
                     </li>
                     <li>
-                      <Link to="/dashboard">CHANGE PASSWORD</Link>
+                      <Link to="/change-password">CHANGE PASSWORD</Link>
                     </li>
                     <li>
-                      <Link to="/dashboard">GET SUPPORT</Link>
+                      <Link to="/support">GET SUPPORT</Link>
                     </li>
                     <li style={{ background: "black" }}>
                       <span onClick={logout} style={{ cursor: "pointer" }}>

@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { TbArrowsDownUp } from "react-icons/tb";
 import { transactionContext } from "../context/transactionContext";
-import loaderimg from "../assets/icons8-combo-chart.gif";
+// import loaderimg from "../assets/icons8-combo-chart.gif";
 
 const DepositHistory = () => {
   const { deposit } = React.useContext(transactionContext);
@@ -33,15 +33,16 @@ const DepositHistory = () => {
             zIndex: 100,
           }}
         >
-          <p>
+          <Loader />
+          {/* <p>
             <img src={loaderimg} />
           </p>
-          <h2>Fetching Transacions</h2>
+          <h2>Fetching Transacions</h2> */}
         </div>
       ) : (
         <>
           <Helmet>
-            <title>FFInvestment | Deposit History</title>
+            <title>ET-Options | Deposit History</title>
           </Helmet>
           <Nav />
           <div className="general-container2">

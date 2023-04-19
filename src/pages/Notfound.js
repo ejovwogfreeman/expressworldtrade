@@ -9,7 +9,7 @@ const Notfound = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | 404 - Not Found</title>
+        <title>ET-Options | 404 - Not Found</title>
       </Helmet>
       <Nav />
       <div className="general-container">

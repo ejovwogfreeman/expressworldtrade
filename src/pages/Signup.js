@@ -66,7 +66,7 @@ const Signup = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | Register</title>
+        <title>ET-Options | Register</title>
       </Helmet>
       <Nav />
 

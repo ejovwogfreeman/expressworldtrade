@@ -8,7 +8,7 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | About</title>
+        <title>ET-Options | About</title>
       </Helmet>
       <Nav />
       <div className="general-container">

@@ -80,13 +80,13 @@ const Editprofile = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | Edit Profile</title>
+        <title>ET-Options | Edit Profile</title>
       </Helmet>
       <Nav />
       <div className="general-container">
         <Background text="EDIT PROFILE" />
         <div className="body">
-          <form onSubmit={handleSubmit} className="signup-form">
+          <form onSubmit={handleSubmit} className="signup-form mb-5">
             <h2>EDIT PROFILE</h2>
             <div
               style={{
@@ -127,6 +127,7 @@ const Editprofile = () => {
                   margin: "0px",
                   width: "100%",
                   borderRadius: "0px",
+                  color: "white",
                   background: "var(--secondary)",
                   padding: 20,
                   cursor: "pointer",

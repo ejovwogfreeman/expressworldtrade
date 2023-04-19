@@ -19,8 +19,10 @@ const Investment = () => {
       ) : (
         <div className="access">
           <h2>JOIN TODAY</h2>
-          <Link to="/login">SIGN IN</Link>
-          <Link to="/register">REGISTER</Link>
+          <div>
+            <Link to="/login">SIGN IN</Link>
+            <Link to="/register">REGISTER</Link>
+          </div>
         </div>
       )}
       <div className="how">
@@ -62,23 +64,23 @@ const Investment = () => {
         </div>
       </div>
       <div className="track">
-        <h1>JOIN TODAY</h1>
-        <div>
-          {UserState.username ? (
-            <>
+        {UserState.username ? (
+          <>
+            <h1>GO TO DASHBOARD</h1>
+            <div>
               <p>Go to your dashboard and track your earnings</p> <br />
-            </>
-          ) : (
-            <>
+              <Link to="/dashboard">GO TO DASHBOARD</Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <h1>JOIN TODAY</h1>
+            <div>
               <p>Register with us to start earning more</p> <br />
-            </>
-          )}
-          {UserState.username ? (
-            <Link to="/dashboard">GO TO DASHBOARD</Link>
-          ) : (
-            <Link to="/register">CREATE AN ACCOUNT</Link>
-          )}
-        </div>
+              <Link to="/register">CREATE AN ACCOUNT</Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

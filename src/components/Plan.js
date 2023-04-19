@@ -1,8 +1,4 @@
 import React from "react";
-// import { CgMail } from "react-icons/cg";
-// import { MdCall } from "react-icons/md";
-// import { Link } from "react-router-dom";
-// import logo from "../assets/logo.png";
 import "../css/Plan.css";
 import { Link } from "react-router-dom";
 import { FaRegStarHalf, FaRegStar } from "react-icons/fa";

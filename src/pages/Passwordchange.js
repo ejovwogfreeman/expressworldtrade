@@ -67,7 +67,7 @@ const Passwordchange = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | Change Password</title>
+        <title>ET-Options | Change Password</title>
       </Helmet>
       <Nav />
       <div className="general-container">

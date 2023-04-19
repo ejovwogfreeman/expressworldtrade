@@ -16,7 +16,7 @@ const Modalinveststarter = () => {
   const navigate = useNavigate();
 
   const [planDetails, setPlanDetails] = React.useState({
-    plan: params.plan ? params.plan : "Starter Plan",
+    plan: params.plan ? params.plan : "Mini Plan",
     amount: null,
   });
 
@@ -54,7 +54,7 @@ const Modalinveststarter = () => {
   }, [params]);
 
   return (
-    <div className="modal-container">
+    <div className="modal-container mb-5">
       <Link to="/investment-package" className="nav-icon">
         <BsFillArrowLeftCircleFill />
       </Link>
@@ -68,13 +68,16 @@ const Modalinveststarter = () => {
           <h3>Investment Range</h3>
           <p>
             {planDetails.plan.toLowerCase().includes("starter") && (
-              <>300.00 USD - 75000.00 USD</>
+              <>300 USD - 2999 USD</>
             )}
             {planDetails.plan.toLowerCase().includes("silver") && (
-              <>75000.00 USD - 100000.00 USD</>
+              <>3000 USD - 49999 USD</>
             )}
             {planDetails.plan.toLowerCase().includes("gold") && (
-              <>100000.00 USD - 1250000.00 USD</>
+              <>50000 USD - 99999 USD</>
+            )}
+            {planDetails.plan.toLowerCase().includes("platinum") && (
+              <>100000 USD - 600000 USD</>
             )}
           </p>
           <div>
@@ -93,11 +96,12 @@ const Modalinveststarter = () => {
               onChange={(e) => {
                 navigate(`/investment/${e.target.value}`);
               }}
-              value={params.plan ? params.plan : "Starter Plan"}
+              value={params.plan ? params.plan : "Mini Plan"}
             >
-              <option value={"Starter Plan"}>Starter Plan</option>
+              <option value={"Mini Plan"}>Mini Plan</option>
               <option value={"Silver Plan"}>Silver Plan</option>
               <option value={"Gold Plan"}>Gold Plan</option>
+              <option value={"Platinum Plan"}>Platinum Plan</option>
             </select>
           </div>
           <br />
@@ -112,8 +116,8 @@ const Modalinveststarter = () => {
           >
             <h5
               style={{
-                background: "rgb(8, 5, 34)",
-                color: "rgb(35, 201, 216)",
+                background: "var(--secondary)",
+                color: "var(--primary)",
                 margin: "0px",
                 padding: "10px",
               }}
@@ -129,9 +133,10 @@ const Modalinveststarter = () => {
             >
               <GiCheckMark />
               &nbsp;Comission -{" "}
-              {planDetails.plan.toLowerCase().includes("starter") && <>150%</>}
+              {planDetails.plan.toLowerCase().includes("mini") && <>150%</>}
               {planDetails.plan.toLowerCase().includes("silver") && <>200%</>}
-              {planDetails.plan.toLowerCase().includes("gold") && <>300%</>}
+              {planDetails.plan.toLowerCase().includes("gold") && <>250%</>}
+              {planDetails.plan.toLowerCase().includes("platinum") && <>300%</>}
             </p>
             <p
               style={{

@@ -20,7 +20,7 @@ const SupportTicket = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | Support Ticket</title>
+        <title>ET-Options | Support Ticket</title>
       </Helmet>
       <Nav />
       <div className="general-container">

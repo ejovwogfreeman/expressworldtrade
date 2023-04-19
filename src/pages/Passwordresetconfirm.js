@@ -57,7 +57,7 @@ const Passwordresetconfirm = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | Reset Password</title>
+        <title>ET-Options | Reset Password</title>
       </Helmet>
       <Nav />
       <div className="general-container">

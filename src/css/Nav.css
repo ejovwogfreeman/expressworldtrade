@@ -51,9 +51,6 @@ nav {
 
 .menu-icon {
   display: none;
-}
-
-.menu-icon {
   font-size: 30px;
   cursor: pointer;
   color: white;
@@ -257,4 +254,14 @@ nav {
 .logoutMobile:hover {
   background-color: rgb(70, 68, 68);
   color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .main-nav {
+    position: relative;
+  }
+  .menu-icon {
+    position: absolute;
+    right: 10px;
+  }
 }

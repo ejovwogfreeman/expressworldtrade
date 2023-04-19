@@ -22,7 +22,7 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>FFInvestment | Contact</title>
+        <title>ET-Options | Contact</title>
       </Helmet>
       <Nav />
       <div className="general-container">

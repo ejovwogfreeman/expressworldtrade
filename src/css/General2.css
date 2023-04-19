@@ -207,7 +207,7 @@
 
 .support-span .button {
   padding: 5px;
-  background-color: var(--secondary);
+  background-color: white;
   border-radius: 5px;
 }
 
@@ -301,7 +301,7 @@ table thead td {
   .general-container2 .body .content .account-stats .card-show .card {
     display: flex;
     width: 100%;
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--primary);
   }
   .general-container2
     .body

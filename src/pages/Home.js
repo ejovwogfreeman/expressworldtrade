@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>FFInvestment | Home</title>
+        <title>ET-Options | Home</title>
       </Helmet>
       <Nav />
       <Header />
