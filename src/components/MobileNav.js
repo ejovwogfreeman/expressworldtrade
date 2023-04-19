@@ -66,10 +66,10 @@ const MobileNav = ({ open, handleOpen }) => {
                 }
               >
                 <li onClick={() => handleOpen()}>
-                  <Link to="/register">INVESTMENT PACKAGE</Link>
+                  <Link to="/investment-package">INVESTMENT PACKAGE</Link>
                 </li>
                 <li onClick={() => handleOpen()}>
-                  <Link to="/login">INVESTMENT HISTORY</Link>
+                  <Link to="/investment-history">INVESTMENT HISTORY</Link>
                 </li>
               </ul>
             </div>
@@ -91,19 +91,19 @@ const MobileNav = ({ open, handleOpen }) => {
                 }
               >
                 <li onClick={() => handleOpen()}>
-                  <Link to="/register">DEPOSIT FUND</Link>
+                  <Link to="/deposit">DEPOSIT FUND</Link>
                 </li>
                 <li onClick={() => handleOpen()}>
-                  <Link to="/login">DEPOSIT HISTORY</Link>
+                  <Link to="/deposit-history">DEPOSIT HISTORY</Link>
                 </li>
                 <li onClick={() => handleOpen()}>
-                  <Link to="/register">WITHDRAW FUND</Link>
+                  <Link to="/withdraw">WITHDRAW FUND</Link>
                 </li>
                 <li onClick={() => handleOpen()}>
-                  <Link to="/login">WITHDRAWAL HISTORY</Link>
+                  <Link to="/withdraw-history">WITHDRAWAL HISTORY</Link>
                 </li>
                 <li onClick={() => handleOpen()}>
-                  <Link to="/register">TRANSACTION LOG</Link>
+                  <Link to="/transaction">TRANSACTION LOG</Link>
                 </li>
               </ul>
             </div>
