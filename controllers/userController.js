@@ -252,14 +252,14 @@ const userInvest = async (req, res) => {
     return res
       .status(400)
       .json({ message: "Amount must not be left empty", error: true });
-  if (plan.toLowerCase().includes("starter")) {
+  if (plan.toLowerCase().includes("mini")) {
     if (amount < 300) {
       return res.status(400).json({
         message: "The amount is smaller than the selected plan.",
         error: true,
       });
     }
-    if (amount > 75000) {
+    if (amount > 2999) {
       return res.status(400).json({
         message: "The amount is larger than the selected plan.",
         error: true,
@@ -268,13 +268,13 @@ const userInvest = async (req, res) => {
   }
 
   if (plan.toLowerCase().includes("silver")) {
-    if (amount < 75000) {
+    if (amount < 3000) {
       return res.status(400).json({
         message: "The amount is smaller than the selected plan.",
         error: true,
       });
     }
-    if (amount > 100000) {
+    if (amount > 49999) {
       return res.status(400).json({
         message: "The amount is larger than the selected plan.",
         error: true,
@@ -283,13 +283,28 @@ const userInvest = async (req, res) => {
   }
 
   if (plan.toLowerCase().includes("gold")) {
+    if (amount < 50000) {
+      return res.status(400).json({
+        message: "The amount is smaller than the selected plan.",
+        error: true,
+      });
+    }
+    if (amount > 99999) {
+      return res.status(400).json({
+        message: "The amount is larger than the selected plan.",
+        error: true,
+      });
+    }
+  }
+
+  if (plan.toLowerCase().includes("platinum")) {
     if (amount < 100000) {
       return res.status(400).json({
         message: "The amount is smaller than the selected plan.",
         error: true,
       });
     }
-    if (amount > 1250000) {
+    if (amount > 600000) {
       return res.status(400).json({
         message: "The amount is larger than the selected plan.",
         error: true,
@@ -433,6 +448,8 @@ const userDeposit = async (req, res) => {
         transaction.save();
       });
       deposit.save();
+    }).catch((err) => {
+      res.send({ message: err });
     });
 
     res.status(201).json({ message: "Files Uploaded Successfully" });

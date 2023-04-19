@@ -16,8 +16,8 @@ const investmentSchema = new mongoose.Schema(
     },
     plan: {
       type: String,
-      default: "Starter Plan",
-      enum: ["Starter Plan", "Silver Plan", "Gold Plan"],
+      default: "Mini Plan",
+      enum: ["Mini Plan", "Silver Plan", "Gold Plan", "Platinum Plan"],
     },
     status: {
       type: String,
