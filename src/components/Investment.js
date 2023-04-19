@@ -14,7 +14,9 @@ const Investment = () => {
       {UserState.username ? (
         <div className="access">
           <h2>GO TO DASHBOARD</h2>
-          <Link to="/dashboard">Dashboard</Link>
+          <div>
+            <Link to="/dashboard">Dashboard</Link>
+          </div>
         </div>
       ) : (
         <div className="access">
