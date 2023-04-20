@@ -8,6 +8,7 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import { TbArrowsDownUp } from "react-icons/tb";
 import { transactionContext } from "../context/transactionContext";
 // import loaderimg from "../assets/icons8-combo-chart.gif";
+import Loader from "../components/Loader";
 
 const DepositHistory = () => {
   const { deposit } = React.useContext(transactionContext);

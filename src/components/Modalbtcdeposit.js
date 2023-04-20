@@ -24,6 +24,17 @@ const Modalbtcdeposit = () => {
     setLoading(true);
     // console.log(depositDetails);
 
+    if (depositDetails.amount === null || depositDetails.file.length === 0) {
+      setToastifyState({
+        ...ToastifyState,
+        message: "Please fill all fields",
+        variant: "error",
+        open: true,
+      });
+      setLoading(false);
+      return;
+    }
+
     let formData = new FormData();
 
     formData.append("files", depositDetails.file[0]);
@@ -33,6 +44,10 @@ const Modalbtcdeposit = () => {
     let Deposit = await makeDeposit(UserState.token, formData);
 
     console.log(Deposit);
+
+    console.log(UserState);
+
+    // console.log(depositDetails);
 
     if (Deposit.error) {
       setLoading(false);

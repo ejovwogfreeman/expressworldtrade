@@ -57,6 +57,8 @@ const Dashboard = () => {
   //   }
   // }, [location.state]);
 
+  console.log(UserState);
+
   return (
     <>
       {!transactionState ||

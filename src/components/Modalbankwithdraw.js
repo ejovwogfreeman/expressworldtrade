@@ -23,6 +23,17 @@ const Modalbankwithdraw = () => {
   const handleSubmit = async () => {
     setLoading(true);
 
+    if (withdrawDetails.amount === null || withdrawDetails.address === null) {
+      setToastifyState({
+        ...ToastifyState,
+        message: "Please fill all fields",
+        variant: "error",
+        open: true,
+      });
+      setLoading(false);
+      return;
+    }
+
     let Withdrawal = await makeWithdrawal(UserState.token, withdrawDetails);
 
     if (Withdrawal.error) {

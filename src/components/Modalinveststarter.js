@@ -23,6 +23,17 @@ const Modalinveststarter = () => {
   const handleSubmit = async () => {
     setLoading(true);
 
+    if (planDetails.amount === null) {
+      setToastifyState({
+        ...ToastifyState,
+        message: "Please fill all fields",
+        variant: "error",
+        open: true,
+      });
+      setLoading(false);
+      return;
+    }
+
     let Investment = await makeInvestment(UserState.token, planDetails);
 
     if (Investment.error) {
@@ -62,12 +73,12 @@ const Modalinveststarter = () => {
         <h2>Investment On {planDetails.plan}</h2>
         <div>
           <h3>Your Balance</h3>
-          <p>${UserState.balance}</p>
+          <p style={{ color: "green" }}>${UserState.balance}</p>
         </div>
         <form>
           <h3>Investment Range</h3>
           <p>
-            {planDetails.plan.toLowerCase().includes("starter") && (
+            {planDetails.plan.toLowerCase().includes("mini") && (
               <>300 USD - 2999 USD</>
             )}
             {planDetails.plan.toLowerCase().includes("silver") && (

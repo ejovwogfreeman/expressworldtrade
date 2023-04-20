@@ -14,7 +14,7 @@ import cryp5 from "../assets/cryimg5.jpg";
 // import Modaletheriumdeposit from '../components/Modaletheriumdeposit'
 // import Modallunodeposit from '../components/Modallunodeposit'
 
-const Withdraw = () => {
+const Deposit = () => {
   return (
     <>
       <Helmet>
@@ -75,4 +75,4 @@ const Withdraw = () => {
   );
 };
 
-export default Withdraw;
+export default Deposit;
