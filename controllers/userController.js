@@ -7,6 +7,7 @@ const Deposit = require("../models/depositModel");
 const Withdrawal = require("../models/withdrawalModel");
 const refCode = require("voucher-code-generator");
 const sendEmail = require("../helpers/email");
+const mongoose = require("mongoose");
 
 ///////////////////////////
 ///////register user///////
