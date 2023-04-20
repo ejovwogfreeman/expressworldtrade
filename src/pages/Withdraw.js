@@ -28,7 +28,7 @@ const Withdraw = () => {
             <h3>BANK TRANSFER</h3>
             <div>
               <img src={cryp} alt="" width="100px" style={{ margin: "20px" }} />
-              <p>Minimum - 2500.00 USD</p>
+              <p>Minimum - 3000.00 USD</p>
               <p>Maximum - 10000000.00 USD</p>
               <p>Charge - 0 + 0% USD</p>
               <p>Processing Time - 1 Day</p>
@@ -56,6 +56,60 @@ const Withdraw = () => {
             </div>
           </div>
           <div className="plan-box">
+            <h3>ETHERIUM</h3>
+            <div>
+              <img
+                src={cryp1}
+                alt=""
+                width="100px"
+                style={{ margin: "20px" }}
+              />
+              <p>Minimum - 5000.00 USD</p>
+              <p>Maximum - 10000000.00 USD</p>
+              <p>Charge - 0 + 0% USD</p>
+              <p>Processing Time - 1 Day</p>
+              <p className="last">
+                <Link to="/withdraw/Etherium">Withdraw Now</Link>
+              </p>
+            </div>
+          </div>
+          <div className="plan-box">
+            <h3>WESTERN UNION</h3>
+            <div>
+              <img
+                src={cryp1}
+                alt=""
+                width="100px"
+                style={{ margin: "20px" }}
+              />
+              <p>Minimum - 10000.00 USD</p>
+              <p>Maximum - 10000000.00 USD</p>
+              <p>Charge - 0 + 0% USD</p>
+              <p>Processing Time - 1 Day</p>
+              <p className="last">
+                <Link to="/withdraw/Western Union">Withdraw Now</Link>
+              </p>
+            </div>
+          </div>
+          <div className="plan-box">
+            <h3>MONEY GRAM</h3>
+            <div>
+              <img
+                src={cryp1}
+                alt=""
+                width="100px"
+                style={{ margin: "20px" }}
+              />
+              <p>Minimum - 10000.00 USD</p>
+              <p>Maximum - 10000000.00 USD</p>
+              <p>Charge - 0 + 0% USD</p>
+              <p>Processing Time - 1 Day</p>
+              <p className="last">
+                <Link to="/withdraw/Money Gram">Withdraw Now</Link>
+              </p>
+            </div>
+          </div>
+          {/* <div className="plan-box">
             <h3>LUNO</h3>
             <div>
               <img
@@ -90,7 +144,7 @@ const Withdraw = () => {
                 <Link to="/withdraw/Tether">Withdraw Now</Link>
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

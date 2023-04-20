@@ -97,15 +97,21 @@ const Modalbankwithdraw = () => {
           >
             <option value={"Bank Transfer"}>Bank Transfer</option>
             <option value={"Bitcoin"}>Bitcoin</option>
-            <option value={"Luno"}>Luno</option>
-            <option value={"Tether"}>Tether</option>
+            <option value={"Etherium"}>Etherium</option>
+            <option value={"Western Union"}>Western Union</option>
+            <option value={"Money Gram"}>Money Gram</option>
+            {/* <option value={"Luno"}>Luno</option>
+            <option value={"Tether"}>Tether</option> */}
           </select>
           <br /> <br />
           <h3>
             {withdrawDetails.method === "Bank Transfer" && "Acount Details"}
             {withdrawDetails.method === "Bitcoin" && "Wallet Details"}
-            {withdrawDetails.method === "Luno" && "Luno Details"}
-            {withdrawDetails.method === "Tether" && "Wallet Details"} <br />
+            {withdrawDetails.method === "Etherium" && "Wallet Details"}
+            {withdrawDetails.method === "Western Union" && "Acount Details"}
+            {withdrawDetails.method === "Money Gram" && "Acount Details"}
+            {/* {withdrawDetails.method === "Luno" && "Luno Details"}
+            {withdrawDetails.method === "Tether" && "Wallet Details"} <br /> */}
           </h3>
           <p>
             {withdrawDetails.method === "Bank Transfer"
@@ -122,9 +128,11 @@ const Modalbankwithdraw = () => {
                   ? "Acount Details"
                   : withdrawDetails.method === "Bitcoin"
                   ? "Wallet Details"
-                  : withdrawDetails.method === "Luno"
-                  ? "Luno Details"
-                  : withdrawDetails.method === "Tether" && "Wallet Details"
+                  : withdrawDetails.method === "Etherium"
+                  ? "Wallet Address"
+                  : withdrawDetails.method === "Western Union"
+                  ? "Account Details"
+                  : withdrawDetails.method === "Money Gram" && "Account Details"
               }
               onChange={(e) =>
                 setWithdrawDetails({
