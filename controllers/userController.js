@@ -320,6 +320,57 @@ const userInvest = async (req, res) => {
       error: true,
     });
 
+  // const investOptions = {
+  //   amount: amount,
+  //   plan: plan,
+  // };
+
+  // const transactionOptions = {
+  //   type: "investment",
+  //   status: "pending",
+  // };
+
+  // let transactionId;
+  // let investmentId;
+
+  // Investment.create(investOptions, (err, investment) => {
+  //   if (err) return res.status(400).json(err);
+
+  //   investmentId = investment.id;
+  //   investment.user.id = _id;
+  //   investment.user.email = email;
+  //   investment.user.username = username;
+
+  //   Transaction.create(transactionOptions, (err, transaction) => {
+  //     if (err) return res.status(400).json(err);
+
+  //     transactionId = transaction.id;
+  //     transaction.transaction = investment.id;
+  //     transaction.user.id = _id;
+  //     transaction.user.email = email;
+  //     transaction.user.username = username;
+
+  //     User.findById(_id, (err, user) => {
+  //       if (err) return res.status(400).json(err);
+
+  //       user.balance = user.balance - amount;
+
+  //       let investments = user.investments;
+  //       investments.push(investmentId);
+  //       user.investments = investments;
+
+  //       let transactions = user.transactions;
+  //       transactions.push(transactionId);
+  //       user.transactions = transactions;
+
+  //       user.save();
+  //     });
+
+  //     transaction.save();
+  //   });
+  //   investment.save();
+  // });
+
   const investOptions = {
     amount: amount,
     plan: plan,
@@ -333,43 +384,30 @@ const userInvest = async (req, res) => {
   let transactionId;
   let investmentId;
 
-  Investment.create(investOptions, (err, investment) => {
-    if (err) return res.status(400).json(err);
-
+  try {
+    const investment = await Investment.create(investOptions);
     investmentId = investment.id;
     investment.user.id = _id;
     investment.user.email = email;
     investment.user.username = username;
+    await investment.save();
 
-    Transaction.create(transactionOptions, (err, transaction) => {
-      if (err) return res.status(400).json(err);
+    const transaction = await Transaction.create(transactionOptions);
+    transactionId = transaction.id;
+    transaction.transaction = investment.id;
+    transaction.user.id = _id;
+    transaction.user.email = email;
+    transaction.user.username = username;
+    await transaction.save();
 
-      transactionId = transaction.id;
-      transaction.transaction = investment.id;
-      transaction.user.id = _id;
-      transaction.user.email = email;
-      transaction.user.username = username;
-
-      User.findById(_id, (err, user) => {
-        if (err) return res.status(400).json(err);
-
-        user.balance = user.balance - amount;
-
-        let investments = user.investments;
-        investments.push(investmentId);
-        user.investments = investments;
-
-        let transactions = user.transactions;
-        transactions.push(transactionId);
-        user.transactions = transactions;
-
-        user.save();
-      });
-
-      transaction.save();
-    });
-    investment.save();
-  });
+    const user = await User.findById(_id);
+    user.balance = user.balance - amount;
+    user.investments.push(investmentId);
+    user.transactions.push(transactionId);
+    await user.save();
+  } catch (err) {
+    return res.status(400).json(err);
+  }
 
   res.status(200).json({ message: "Investment Added Successfully" });
 };
@@ -400,6 +438,56 @@ const userDeposit = async (req, res) => {
     });
 
     // create new deposit
+    // const depositOptions = {
+    //   amount,
+    //   mode,
+    //   proof: filesArray,
+    //   status: "pending",
+    // };
+
+    // const transactionOptions = {
+    //   type: "deposit",
+    //   status: "pending",
+    // };
+
+    // let transactionId;
+    // let depositId;
+
+    // Deposit.create(depositOptions, (err, deposit) => {
+    //   if (err) return res.status(400).json(err);
+
+    //   depositId = deposit.id;
+    //   deposit.user.id = _id;
+    //   deposit.user.email = email;
+    //   deposit.user.username = username;
+
+    //   Transaction.create(transactionOptions, (err, transaction) => {
+    //     if (err) return res.status(400).json(err);
+
+    //     transactionId = transaction.id;
+    //     transaction.transaction = depositId;
+    //     transaction.user.id = _id;
+    //     transaction.user.email = email;
+    //     transaction.user.username = username;
+
+    //     User.findById(_id, (err, user) => {
+    //       if (err) return res.status(400).json(err);
+
+    //       let deposits = user.deposits;
+    //       deposits.push(depositId);
+
+    //       let transactions = user.transactions;
+    //       transactions.push(transactionId);
+    //       user.transactions = transactions;
+
+    //       user.save();
+    //     });
+
+    //     transaction.save();
+    //   });
+    //   deposit.save();
+    // });
+
     const depositOptions = {
       amount,
       mode,
@@ -415,42 +503,29 @@ const userDeposit = async (req, res) => {
     let transactionId;
     let depositId;
 
-    Deposit.create(depositOptions, (err, deposit) => {
-      if (err) return res.status(400).json(err);
-
+    try {
+      const deposit = await Deposit.create(depositOptions);
       depositId = deposit.id;
       deposit.user.id = _id;
       deposit.user.email = email;
       deposit.user.username = username;
+      await deposit.save();
 
-      Transaction.create(transactionOptions, (err, transaction) => {
-        if (err) return res.status(400).json(err);
+      const transaction = await Transaction.create(transactionOptions);
+      transactionId = transaction.id;
+      transaction.transaction = depositId;
+      transaction.user.id = _id;
+      transaction.user.email = email;
+      transaction.user.username = username;
+      await transaction.save();
 
-        transactionId = transaction.id;
-        transaction.transaction = depositId;
-        transaction.user.id = _id;
-        transaction.user.email = email;
-        transaction.user.username = username;
-
-        User.findById(_id, (err, user) => {
-          if (err) return res.status(400).json(err);
-
-          let deposits = user.deposits;
-          deposits.push(depositId);
-
-          let transactions = user.transactions;
-          transactions.push(transactionId);
-          user.transactions = transactions;
-
-          user.save();
-        });
-
-        transaction.save();
-      });
-      deposit.save();
-    }).catch((err) => {
-      res.send({ message: err });
-    });
+      const user = await User.findById(_id);
+      user.deposits.push(depositId);
+      user.transactions.push(transactionId);
+      await user.save();
+    } catch (err) {
+      return res.status(400).json(err);
+    }
 
     res.status(201).json({ message: "Files Uploaded Successfully" });
   } catch (error) {
@@ -475,6 +550,58 @@ const userWithdraw = async (req, res) => {
       .json({ message: "You do not have sufficient balance.", error: true });
   }
 
+  // const withdrawOptions = {
+  //   amount: amount,
+  //   accountDetails: address,
+  //   mode: method,
+  // };
+
+  // const transactionOptions = {
+  //   type: "withdrawal",
+  //   status: "pending",
+  // };
+
+  // let transactionId;
+  // let withdrawId;
+
+  // Withdrawal.create(withdrawOptions, (err, withdraw) => {
+  //   if (err) return res.status(400).json({ message: err.message, error: true });
+
+  //   withdrawId = withdraw.id;
+  //   withdraw.user.id = _id;
+  //   withdraw.user.email = email;
+  //   withdraw.user.username = username;
+
+  //   Transaction.create(transactionOptions, (err, transaction) => {
+  //     if (err)
+  //       return res.status(400).json({ message: err.message, error: true });
+
+  //     transactionId = transaction.id;
+  //     transaction.transaction = withdraw.id;
+  //     transaction.user.id = _id;
+  //     transaction.user.email = email;
+  //     transaction.user.username = username;
+
+  //     User.findById(_id, (err, user) => {
+  //       if (err)
+  //         return res.status(400).json({ message: err.message, error: true });
+
+  //       let withdraws = user.withdrawal;
+  //       withdraws.push(withdrawId);
+  //       user.withdrawal = withdraws;
+
+  //       let transactions = user.transactions;
+  //       transactions.push(transactionId);
+  //       user.transactions = transactions;
+
+  //       user.save();
+  //     });
+
+  //     transaction.save();
+  //   });
+  //   withdraw.save();
+  // });
+
   const withdrawOptions = {
     amount: amount,
     accountDetails: address,
@@ -489,49 +616,52 @@ const userWithdraw = async (req, res) => {
   let transactionId;
   let withdrawId;
 
-  Withdrawal.create(withdrawOptions, (err, withdraw) => {
-    if (err) return res.status(400).json({ message: err.message, error: true });
+  const session = await mongoose.startSession();
+  session.startTransaction();
 
-    withdrawId = withdraw.id;
+  try {
+    const withdraw = await Withdrawal.create([withdrawOptions], { session });
+    withdrawId = withdraw[0].id;
     withdraw.user.id = _id;
     withdraw.user.email = email;
     withdraw.user.username = username;
+    await withdraw.save({ session });
 
-    Transaction.create(transactionOptions, (err, transaction) => {
-      if (err)
-        return res.status(400).json({ message: err.message, error: true });
-
-      transactionId = transaction.id;
-      transaction.transaction = withdraw.id;
-      transaction.user.id = _id;
-      transaction.user.email = email;
-      transaction.user.username = username;
-
-      User.findById(_id, (err, user) => {
-        if (err)
-          return res.status(400).json({ message: err.message, error: true });
-
-        let withdraws = user.withdrawal;
-        withdraws.push(withdrawId);
-        user.withdrawal = withdraws;
-
-        let transactions = user.transactions;
-        transactions.push(transactionId);
-        user.transactions = transactions;
-
-        user.save();
-      });
-
-      transaction.save();
+    const transaction = await Transaction.create([transactionOptions], {
+      session,
     });
-    withdraw.save();
-  });
+    transactionId = transaction[0].id;
+    transaction.transaction = withdrawId;
+    transaction.user.id = _id;
+    transaction.user.email = email;
+    transaction.user.username = username;
+    await transaction.save({ session });
+
+    const user = await User.findById(_id).session(session);
+    let withdraws = user.withdrawal;
+    withdraws.push(withdrawId);
+    user.withdrawal = withdraws;
+    let transactions = user.transactions;
+    transactions.push(transactionId);
+    user.transactions = transactions;
+    await user.save({ session });
+
+    await session.commitTransaction();
+  } catch (error) {
+    await session.abortTransaction();
+    return res.status(400).json({ message: error.message, error: true });
+  } finally {
+    session.endSession();
+  }
 
   res
     .status(200)
     .json({ message: "Withdrawal has been initiated Successfully" });
 };
 
+////////////////////////////////////
+////////////reset password//////////
+////////////////////////////////////
 const resetPassword = async (req, res, next) => {
   const id = req.headers.userid;
   const password = req.body.password;
