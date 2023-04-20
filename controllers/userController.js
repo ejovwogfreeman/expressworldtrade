@@ -551,58 +551,6 @@ const userWithdraw = async (req, res) => {
       .json({ message: "You do not have sufficient balance.", error: true });
   }
 
-  const withdrawOptions = {
-    amount: amount,
-    accountDetails: address,
-    mode: method,
-  };
-
-  const transactionOptions = {
-    type: "withdrawal",
-    status: "pending",
-  };
-
-  let transactionId;
-  let withdrawId;
-
-  Withdrawal.create(withdrawOptions, (err, withdraw) => {
-    if (err) return res.status(400).json({ message: err.message, error: true });
-
-    withdrawId = withdraw.id;
-    withdraw.user.id = _id;
-    withdraw.user.email = email;
-    withdraw.user.username = username;
-
-    Transaction.create(transactionOptions, (err, transaction) => {
-      if (err)
-        return res.status(400).json({ message: err.message, error: true });
-
-      transactionId = transaction.id;
-      transaction.transaction = withdraw.id;
-      transaction.user.id = _id;
-      transaction.user.email = email;
-      transaction.user.username = username;
-
-      User.findById(_id, (err, user) => {
-        if (err)
-          return res.status(400).json({ message: err.message, error: true });
-
-        let withdraws = user.withdrawal;
-        withdraws.push(withdrawId);
-        user.withdrawal = withdraws;
-
-        let transactions = user.transactions;
-        transactions.push(transactionId);
-        user.transactions = transactions;
-
-        user.save();
-      });
-
-      transaction.save();
-    });
-    withdraw.save();
-  });
-
   // const withdrawOptions = {
   //   amount: amount,
   //   accountDetails: address,
@@ -617,43 +565,88 @@ const userWithdraw = async (req, res) => {
   // let transactionId;
   // let withdrawId;
 
-  // const session = await mongoose.startSession();
-  // session.startTransaction();
+  // Withdrawal.create(withdrawOptions, (err, withdraw) => {
+  //   if (err) return res.status(400).json({ message: err.message, error: true });
 
-  // try {
-  //   const withdraw = await Withdrawal.create([withdrawOptions], { session });
-  //   withdrawId = withdraw[0].id;
+  //   withdrawId = withdraw.id;
   //   withdraw.user.id = _id;
   //   withdraw.user.email = email;
   //   withdraw.user.username = username;
-  //   await withdraw.save({ session });
 
-  //   const transaction = await Transaction.create([transactionOptions], {
-  //     session,
+  //   Transaction.create(transactionOptions, (err, transaction) => {
+  //     if (err)
+  //       return res.status(400).json({ message: err.message, error: true });
+
+  //     transactionId = transaction.id;
+  //     transaction.transaction = withdraw.id;
+  //     transaction.user.id = _id;
+  //     transaction.user.email = email;
+  //     transaction.user.username = username;
+
+  //     User.findById(_id, (err, user) => {
+  //       if (err)
+  //         return res.status(400).json({ message: err.message, error: true });
+
+  //       let withdraws = user.withdrawal;
+  //       withdraws.push(withdrawId);
+  //       user.withdrawal = withdraws;
+
+  //       let transactions = user.transactions;
+  //       transactions.push(transactionId);
+  //       user.transactions = transactions;
+
+  //       user.save();
+  //     });
+
+  //     transaction.save();
   //   });
-  //   transactionId = transaction[0].id;
-  //   transaction.transaction = withdrawId;
-  //   transaction.user.id = _id;
-  //   transaction.user.email = email;
-  //   transaction.user.username = username;
-  //   await transaction.save({ session });
+  //   withdraw.save();
+  // });
 
-  //   const user = await User.findById(_id).session(session);
-  //   let withdraws = user.withdrawal;
-  //   withdraws.push(withdrawId);
-  //   user.withdrawal = withdraws;
-  //   let transactions = user.transactions;
-  //   transactions.push(transactionId);
-  //   user.transactions = transactions;
-  //   await user.save({ session });
+  const withdrawOptions = {
+    amount: amount,
+    accountDetails: address,
+    mode: method,
+  };
 
-  //   await session.commitTransaction();
-  // } catch (error) {
-  //   await session.abortTransaction();
-  //   return res.status(400).json({ message: error.message, error: true });
-  // } finally {
-  //   session.endSession();
-  // }
+  const transactionOptions = {
+    type: "withdrawal",
+    status: "pending",
+  };
+
+  try {
+    const withdraw = await Withdrawal.create(withdrawOptions);
+    withdrawId = withdraw.id;
+    withdraw.user.id = _id;
+    withdraw.user.email = email;
+    withdraw.user.username = username;
+    await withdraw.save();
+
+    const transaction = await Transaction.create(transactionOptions);
+    transactionId = transaction.id;
+    transaction.transaction = withdraw.id;
+    transaction.user.id = _id;
+    transaction.user.email = email;
+    transaction.user.username = username;
+    await transaction.save();
+
+    const user = await User.findById(_id);
+    let withdraws = user.withdrawal;
+    withdraws.push(withdrawId);
+    user.withdrawal = withdraws;
+
+    let transactions = user.transactions;
+    transactions.push(transactionId);
+    user.transactions = transactions;
+
+    await user.save();
+
+    res
+      .status(200)
+      .json({ message: "Withdrawal request created successfully" });
+  } catch (err) {
+    res.status(400).json({ message: err.message, error: true });
+  }
 
   res
     .status(200)
