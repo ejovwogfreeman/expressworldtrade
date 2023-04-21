@@ -75,23 +75,7 @@ const Withdrawal = () => {
   return (
     <>
       {!withdrawalState ? (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            background: "#fff",
-            zIndex: 100,
-          }}
-        >
-          <Loader />
-        </div>
+        <Loader />
       ) : (
         <>
           <Helmet>
