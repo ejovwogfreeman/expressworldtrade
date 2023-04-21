@@ -45,7 +45,7 @@ const Transactions = () => {
       ) : (
         <>
           <Helmet>
-            <title>FFtransaction | Transaction History</title>
+            <title>ET-Options | Transaction History</title>
           </Helmet>
           <Navbar />
           <div className="home-container">

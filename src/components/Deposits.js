@@ -95,7 +95,7 @@ const Deposits = () => {
       ) : (
         <>
           <Helmet>
-            <title>FFdeposit | Deposit History</title>
+            <title>ET-Options | Deposit History</title>
           </Helmet>
           <Navbar />
           <div className="home-container">

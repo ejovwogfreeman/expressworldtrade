@@ -78,10 +78,10 @@ const Login = () => {
             <img
               src={logo}
               alt=""
-              width="80px"
+              width="150px"
               style={{ display: "block", margin: "auto" }}
             />
-            <h2>ADMIN LOGIN</h2>
+            <h2 style={{ marginTop: "10px" }}>ADMIN LOGIN</h2>
             <div>
               <input
                 type="email"
@@ -113,7 +113,7 @@ const Login = () => {
                 </span>
               </span>
             </div>
-            <button disabled={loading}>
+            <button disabled={loading} style={{ cursor: "pointer" }}>
               {loading ? "LOADING..." : "LOGIN"}
             </button>
           </form>

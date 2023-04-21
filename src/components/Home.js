@@ -70,7 +70,7 @@ const Home = () => {
         <>
           <div className="home-container">
             <Helmet>
-              <title>FFInvestment | dashboard</title>
+              <title>ET-Options | dashboard</title>
             </Helmet>
             <Navbar />
             <form>

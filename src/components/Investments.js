@@ -44,7 +44,7 @@ const Investments = () => {
       ) : (
         <>
           <Helmet>
-            <title>FFInvestment | Investment History</title>
+            <title>ET-Options | Investment History</title>
           </Helmet>
           <Navbar />
           <div className="home-container">

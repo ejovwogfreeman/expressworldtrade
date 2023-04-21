@@ -26,7 +26,7 @@
   text-align: center;
 }
 .home-container .user-container div {
-  background-color: var(--primary);
+  border: 1px solid var(--primary);
   border-radius: 5px;
   padding: 30px 10px 10px;
 }
@@ -36,7 +36,8 @@
   color: var(--secondary);
   font-size: 50px;
   border-radius: 50%;
-  background-color: white;
+  color: white;
+  background-color: var(--primary);
 }
 
 @media screen and (max-width: 400px) {

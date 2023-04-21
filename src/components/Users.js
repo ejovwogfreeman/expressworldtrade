@@ -95,7 +95,7 @@ const Users = () => {
       ) : (
         <>
           <Helmet>
-            <title>FFInvestment | All Users</title>
+            <title>ET-Options | All Users</title>
           </Helmet>
           <div className="home-container">
             <Navbar />

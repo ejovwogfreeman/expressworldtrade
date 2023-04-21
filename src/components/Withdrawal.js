@@ -95,7 +95,7 @@ const Withdrawal = () => {
       ) : (
         <>
           <Helmet>
-            <title>FFwithdrawal | Withdrawal History</title>
+            <title>ET-Options | Withdrawal History</title>
           </Helmet>
           <Navbar />
           <div className="home-container">
