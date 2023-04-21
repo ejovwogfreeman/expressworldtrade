@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import loaderimg from "../assets/icons8-combo-chart.gif";
+// import loaderimg from "../assets/icons8-combo-chart.gif";
 import "../css/Home.css";
 import Navbar from "./Navbar";
 import { UsersContext } from "../context/UsersContext";
@@ -8,6 +8,7 @@ import { Button, Box, Popover, Typography, TextField } from "@mui/material";
 import { UserContext } from "../context/UserContext";
 import { ToastifyContext } from "../context/ToastifyContext";
 import { userFund, getUsers } from "../data";
+import Loader from "./Loader";
 
 const Users = () => {
   const { users } = React.useContext(UsersContext);
@@ -89,10 +90,7 @@ const Users = () => {
             zIndex: 100,
           }}
         >
-          <p>
-            <img src={loaderimg} />
-          </p>
-          <h2>Fetching Users</h2>
+          <Loader />
         </div>
       ) : (
         <>

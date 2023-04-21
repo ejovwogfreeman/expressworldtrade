@@ -26,17 +26,17 @@
   text-align: center;
 }
 .home-container .user-container div {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--primary);
   border-radius: 5px;
   padding: 30px 10px 10px;
 }
 
 .home-container .user-container div .icon {
   padding: 10px;
-  color: white;
+  color: var(--secondary);
   font-size: 50px;
   border-radius: 50%;
-  background-color: rgba(23, 119, 111, 0.2);
+  background-color: white;
 }
 
 @media screen and (max-width: 400px) {

@@ -3,7 +3,8 @@ import "../css/Home.css";
 import Navbar from "./Navbar";
 import { Helmet } from "react-helmet";
 import { TransactionContext } from "../context/TransactionContext";
-import loaderimg from "../assets/icons8-combo-chart.gif";
+// import loaderimg from "../assets/icons8-combo-chart.gif";
+import Loader from "./Loader";
 import { Button, Grid, Box } from "@mui/material";
 import { ToastifyContext } from "../context/ToastifyContext";
 import { UserContext } from "../context/UserContext";
@@ -89,10 +90,7 @@ const Deposits = () => {
             zIndex: 100,
           }}
         >
-          <p>
-            <img src={loaderimg} />
-          </p>
-          <h2>Fetching Transacions</h2>
+          <Loader />
         </div>
       ) : (
         <>
@@ -141,13 +139,13 @@ const Deposits = () => {
                                   <td>{x.amount}</td>
                                   <td>
                                     <a
-                                      href={`https://backend-tytc.onrender.com/${x.proof[0].link}`}
+                                      href={`https://expressworldtrade.onrender.com/${x.proof[0].link}`}
                                       target="_blank"
                                     >
                                       <img
                                         height="50px"
                                         width="50px"
-                                        src={`https://backend-tytc.onrender.com/${x.proof[0].link}`}
+                                        src={`https://expressworldtrade.onrender.com/${x.proof[0].link}`}
                                         alt=""
                                       />
                                     </a>

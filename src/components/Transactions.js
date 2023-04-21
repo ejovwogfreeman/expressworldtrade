@@ -3,7 +3,8 @@ import "../css/Home.css";
 import Navbar from "./Navbar";
 import { Helmet } from "react-helmet";
 import { TransactionContext } from "../context/TransactionContext";
-import loaderimg from "../assets/icons8-combo-chart.gif";
+import Loader from "./Loader";
+// import loaderimg from "../assets/icons8-combo-chart.gif";
 // import { UserContext } from "../context/UserContext";
 // import { useNavigate } from "react-router-dom";
 
@@ -39,10 +40,7 @@ const Transactions = () => {
             zIndex: 100,
           }}
         >
-          <p>
-            <img src={loaderimg} />
-          </p>
-          <h2>Fetching Transacions</h2>
+          <Loader />
         </div>
       ) : (
         <>

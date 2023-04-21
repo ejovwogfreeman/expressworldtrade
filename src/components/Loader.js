@@ -4,18 +4,18 @@ import loader from "../assets/loading.gif";
 
 const Loader = () => {
   return (
-    <div style={{ textAlign: "center", marginTop: "200px" }}>
+    <div style={{ textAlign: "center", marginTop: "100px" }}>
       <img
         src={logo}
         alt=""
-        width="100px"
+        width="200px"
         style={{ display: "block", margin: "auto" }}
       />
       <img
         src={loader}
         alt="loading"
-        width="50px"
-        style={{ display: "block", margin: "auto" }}
+        width="100px"
+        style={{ display: "block", margin: "auto", paddingLeft: "20px" }}
       />
     </div>
   );

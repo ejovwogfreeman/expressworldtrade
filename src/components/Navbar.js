@@ -147,7 +147,7 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt=""
-                width="40px"
+                width="150px"
                 style={{ marginTop: "8px" }}
               />
             </Typography>
@@ -185,6 +185,7 @@ export default function Navbar() {
             "Logout",
           ].map((text, index) => (
             <Link
+              style={{ color: "#040647" }}
               to={
                 index === 0
                   ? "/dashboard"

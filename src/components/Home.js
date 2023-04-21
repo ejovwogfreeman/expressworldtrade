@@ -8,7 +8,8 @@ import PaymentsIcon from "@mui/icons-material/Payments";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { TransactionContext } from "../context/TransactionContext";
 import { UsersContext } from "../context/UsersContext";
-import loaderimg from "../assets/icons8-combo-chart.gif";
+// import loaderimg from "../assets/icons8-combo-chart.gif";
+import Loader from "./Loader";
 import { Helmet } from "react-helmet";
 import "../css/Home.css";
 // import { UserContext } from "../context/UserContext";
@@ -63,10 +64,7 @@ const Home = () => {
             zIndex: 100,
           }}
         >
-          <p>
-            <img src={loaderimg} />
-          </p>
-          <h2>Fetching Transacions</h2>
+          <Loader />
         </div>
       ) : (
         <>

@@ -3,13 +3,16 @@
 /////////////////////////////
 
 export const loginUser = async (user) => {
-  const res = await fetch("https://backend-tytc.onrender.com/api/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(user),
-  });
+  const res = await fetch(
+    "https://expressworldtrade.onrender.com/api/users/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }
+  );
   const login = await res.json();
   return login;
 };
@@ -19,13 +22,16 @@ export const loginUser = async (user) => {
 ////////////////////////////
 
 export const getUser = async (token) => {
-  const res = await fetch("https://backend-tytc.onrender.com/api/users/user", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "auth-token": token,
-    },
-  });
+  const res = await fetch(
+    "https://expressworldtrade.onrender.com/api/users/user",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    }
+  );
   const user = await res.json();
   return user;
 };
@@ -35,7 +41,7 @@ export const getUser = async (token) => {
 ////////////////////////////
 
 export const getUsers = async (token) => {
-  const res = await fetch("https://backend-tytc.onrender.com/api/users", {
+  const res = await fetch("https://expressworldtrade.onrender.com/api/users", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -52,7 +58,7 @@ export const getUsers = async (token) => {
 
 export const getTransaction = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/transactions",
+    "https://expressworldtrade.onrender.com/api/users/transactions",
     {
       method: "GET",
       headers: {
@@ -71,7 +77,7 @@ export const getTransaction = async (token) => {
 
 export const getInvestment = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/investments",
+    "https://expressworldtrade.onrender.com/api/users/investments",
     {
       method: "GET",
       headers: {
@@ -90,7 +96,7 @@ export const getInvestment = async (token) => {
 
 export const getWithdrawal = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/withdrawals",
+    "https://expressworldtrade.onrender.com/api/users/withdrawals",
     {
       method: "GET",
       headers: {
@@ -109,7 +115,7 @@ export const getWithdrawal = async (token) => {
 
 export const getDeposit = async (token) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/deposits",
+    "https://expressworldtrade.onrender.com/api/users/deposits",
     {
       method: "GET",
       headers: {
@@ -128,7 +134,7 @@ export const getDeposit = async (token) => {
 
 export const confirmDeposit = async (token, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/deposit/confirm",
+    "https://expressworldtrade.onrender.com/api/users/deposit/confirm",
     {
       method: "POST",
       headers: {
@@ -148,7 +154,7 @@ export const confirmDeposit = async (token, id) => {
 
 export const processDeposit = async (token, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/deposit/process",
+    "https://expressworldtrade.onrender.com/api/users/deposit/process",
     {
       method: "POST",
       headers: {
@@ -168,7 +174,7 @@ export const processDeposit = async (token, id) => {
 
 export const declineDeposit = async (token, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/deposit/decline",
+    "https://expressworldtrade.onrender.com/api/users/deposit/decline",
     {
       method: "POST",
       headers: {
@@ -188,7 +194,7 @@ export const declineDeposit = async (token, id) => {
 
 export const confirmWithdrawal = async (token, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/withdraw/confirm",
+    "https://expressworldtrade.onrender.com/api/users/withdraw/confirm",
     {
       method: "POST",
       headers: {
@@ -208,7 +214,7 @@ export const confirmWithdrawal = async (token, id) => {
 
 export const processWithdrawal = async (token, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/withdraw/process",
+    "https://expressworldtrade.onrender.com/api/users/withdraw/process",
     {
       method: "POST",
       headers: {
@@ -228,7 +234,7 @@ export const processWithdrawal = async (token, id) => {
 
 export const declineWithdrawal = async (token, id) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/withdraw/decline",
+    "https://expressworldtrade.onrender.com/api/users/withdraw/decline",
     {
       method: "POST",
       headers: {
@@ -248,7 +254,7 @@ export const declineWithdrawal = async (token, id) => {
 
 export const userFund = async (token, details) => {
   const res = await fetch(
-    "https://backend-tytc.onrender.com/api/users/funduser",
+    "https://expressworldtrade.onrender.com/api/users/funduser",
     {
       method: "POST",
       headers: {
