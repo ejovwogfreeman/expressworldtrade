@@ -9,6 +9,7 @@ import { UserContext } from "../context/UserContext";
 import { ToastifyContext } from "../context/ToastifyContext";
 import { userFund, getUsers } from "../data";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const { users } = React.useContext(UsersContext);
@@ -98,6 +99,7 @@ const Users = () => {
                         <th>Balance</th>
                         <th>Date Joined</th>
                         <td>&nbsp;Action</td>
+                        <td>&nbsp;Details</td>
                       </thead>
                       {usersState
                         .sort(function (a, b) {
@@ -131,6 +133,9 @@ const Users = () => {
                                       Fund
                                     </Button>
                                   </Box>
+                                </td>
+                                <td>
+                                  <Link to={`user/${x._id}`}>View Details</Link>
                                 </td>
                               </tr>
                             </>

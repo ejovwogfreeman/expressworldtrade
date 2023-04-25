@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import Loader from "./components/Loader";
 import Login from "./components/Login";
 import Users from "./components/Users";
+import User from "./components/User";
 import Investments from "./components/Investments";
 import Deposits from "./components/Deposits";
 import Withdrawal from "./components/Withdrawal";
@@ -40,6 +41,7 @@ function App() {
                   <Route path="/" element={<Login />} />
                   <Route path="/dashboard" element={<Home />} />
                   <Route path="/users" element={<Users />} />
+                  <Route path="/users/user/:id" element={<User />} />
                   <Route path="/Investments" element={<Investments />} />
                   <Route path="/deposits" element={<Deposits />} />
                   <Route path="/withdrawals" element={<Withdrawal />} />
