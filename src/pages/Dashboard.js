@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Background from "../components/Background";
 import "../css/General2.css";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -17,6 +17,7 @@ import Loader from "../components/Loader";
 const Dashboard = () => {
   const [ToastifyState, setToastifyState] = React.useContext(ToastifyContext);
   const [UserState, setUserState] = React.useContext(UserContext);
+
   const { transaction, withdrawal, deposit, investment } =
     React.useContext(transactionContext);
   const [loading, setLoading] = React.useState(false);
@@ -29,8 +30,27 @@ const Dashboard = () => {
 
   const [withdrawalState, setWithdrawalState] = withdrawal;
 
+  const [balance, setBalance] = useState(null);
+
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      setLoading(true);
+      try {
+        const user = await getUser(UserState.token);
+        setBalance(user.balance);
+      } catch (error) {
+        setError(error);
+      }
+      setLoading(false);
+    };
+
+    fetchBalance();
+  }, [balance]);
+
+  console.log(balance);
 
   // useEffect(async () => {
   //   setLoading(true);
@@ -57,8 +77,6 @@ const Dashboard = () => {
   //   }
   // }, [location.state]);
 
-  console.log(UserState);
-
   return (
     <>
       {!transactionState ||
@@ -83,7 +101,8 @@ const Dashboard = () => {
                     <div className="card">
                       <div className="card-head">
                         <FaRegMoneyBillAlt className="icon" />
-                        <h5>$ {UserState.balance}</h5>
+                        {/* <h5>$ {UserState.balance}</h5> */}
+                        <h5>$ {balance}</h5>
                       </div>
                       <div className="card-tail">
                         <small>Total Deposits / Current Balance</small>

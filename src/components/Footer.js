@@ -20,12 +20,12 @@ const Footer = () => {
           <ul>
             <h3>Contact</h3>
             <li>84 High Point Ave. El Dorado, AR 71730</li>
-            <li className="d-flex align-items-center">
+            <li className="d-flex align-items-center justify-content-center">
               <CgMail
                 className="icon"
                 style={{ width: "14px", height: "14px" }}
               />
-              <span className="ms-1">mail@expressworldtrade.option.com</span>
+              <span className="ms-1">Tradxpressinfo@gmail.com</span>
             </li>
           </ul>
         </div>
@@ -60,8 +60,7 @@ const Footer = () => {
       </div>
       <div className="sub">
         <p>
-          Copyright &copy; {year}. All rights reserved,
-          expressworldtrade.option.com
+          Copyright &copy; {year}. All rights reserved, expressworldtrade.com
         </p>
       </div>
     </div>

@@ -47,11 +47,11 @@ const Nav = () => {
         <div className="top-nav">
           <span className="d-flex align-items-center">
             <CgMail className="icon" />
-            <span className="ms-1">mail@expressworldtrade.option.com</span>
+            <span className="ms-1">Tradxpressinfo@gmail.com</span>
           </span>
           <span className="left">
             <MdCall className="icon" />
-            +1 (213) 111 - 111
+            +1 (213) 980 9687
           </span>
         </div>
       ) : null}
