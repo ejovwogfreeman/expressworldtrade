@@ -203,11 +203,7 @@ const adminGetUsers = async (req, res) => {
 //////////////////////////////////////////////////
 const adminGetUser = async (req, res) => {
   const user = await User.findById(req.params.id);
-  const { ...others } = user._doc;
-  res.send({
-    ...others,
-    token: accessToken(user),
-  });
+  res.send(user);
 };
 
 ///////////////////////////////////////////////////
