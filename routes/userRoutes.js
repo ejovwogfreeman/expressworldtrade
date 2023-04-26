@@ -5,7 +5,6 @@ const verify = require("../middlewares/authToken");
 const {
   registerUser,
   loginUser,
-  getUsers,
   updateUser,
   userInvest,
   resetPassword,
@@ -30,6 +29,10 @@ const {
   getWithdrawals,
   getInvestments,
   fundUser,
+  adminGetUsers,
+  adminGetUser,
+  adminUpdateUser,
+  adminDeleteUser,
 } = require("../controllers/adminController");
 const { upload } = require("../config/file");
 
@@ -37,8 +40,11 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/reset-password", resetPassword);
 router.post("/forgot-password", forgotPasword);
-router.get("/", checkAdmin, getUsers);
-router.get("/user", verify, getUser);
+router.get("/", checkAdmin, adminGetUsers);
+router.get("/single", checkAdmin, adminGetUser);
+router.get("/update", checkAdmin, adminUpdateUser);
+router.get("/delete", checkAdmin, adminDeleteUser);
+router.get("/user/:id", verify, getUser);
 router.patch("/update-user", verify, upload.array("files"), updateUser);
 router.post("/invest", verify, userInvest);
 router.post("/deposit", verify, upload.array("files"), userDeposit);

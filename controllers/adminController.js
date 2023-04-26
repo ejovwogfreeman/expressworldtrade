@@ -189,6 +189,57 @@ const fundUser = async (req, res) => {
   res.status(200).json({ message: "Funded Successfully" });
 };
 
+///////////////////////////
+///////get all users///////
+///////////////////////////
+
+const adminGetUsers = async (req, res) => {
+  const users = await User.find();
+  res.status(200).json(users);
+};
+
+//////////////////////////////////////////////////
+//////////////admin getting a user////////////////
+//////////////////////////////////////////////////
+const adminGetUser = async (req, res) => {
+  const user = await User.findById(req.params.id);
+  const { ...others } = user._doc;
+  res.send({
+    ...others,
+    token: accessToken(user),
+  });
+};
+
+///////////////////////////////////////////////////
+//////////////admin upgating a user////////////////
+///////////////////////////////////////////////////
+const adminUpdateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { balance, name } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { $set: { balance, name } },
+      { new: true }
+    );
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+//////////////////////////////////////////////////
+//////////////admin deleting a user///////////////
+//////////////////////////////////////////////////
+const adminDeleteUser = async (req, res) => {
+  const { title, body } = req.body;
+  await User.findByIdAndDelete(req.params.id, { title, body });
+  await res.status(200).send({ message: "blog post deleted successfully" });
+};
+
 module.exports = {
   confirmDeposit,
   processDeposit,
@@ -201,4 +252,8 @@ module.exports = {
   getWithdrawals,
   getInvestments,
   fundUser,
+  adminGetUsers,
+  adminGetUser,
+  adminUpdateUser,
+  adminDeleteUser,
 };

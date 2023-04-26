@@ -92,15 +92,6 @@ const loginUser = async (req, res) => {
 };
 
 ///////////////////////////
-///////get all users///////
-///////////////////////////
-
-const getUsers = async (req, res) => {
-  const users = await User.find();
-  res.status(200).json(users);
-};
-
-///////////////////////////
 ///////get one user////////
 ///////////////////////////
 
@@ -695,7 +686,6 @@ const forgotPasword = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
-  getUsers,
   updateUser,
   userInvest,
   userDeposit,
