@@ -212,11 +212,11 @@ const adminGetUser = async (req, res) => {
 const adminUpdateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { balance, name } = req.body;
+    const { name, userName, email, phoneNumber, balance } = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { $set: { balance, name } },
+      { $set: { name, userName, email, phoneNumber, balance } },
       { new: true }
     );
 
@@ -233,7 +233,7 @@ const adminUpdateUser = async (req, res) => {
 const adminDeleteUser = async (req, res) => {
   const { title, body } = req.body;
   await User.findByIdAndDelete(req.params.id, { title, body });
-  await res.status(200).send({ message: "blog post deleted successfully" });
+  await res.status(200).send({ message: "user post deleted successfully" });
 };
 
 module.exports = {
