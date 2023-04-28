@@ -40,14 +40,14 @@ const Contact = () => {
                 Send a Mail: <br />
                 <span>
                   <CgMail className="icon" />
-                  mail@expressworldtrade.option.com
+                  Tradxpressinfo@gmail.com
                 </span>
               </p>
               <p>
                 Call us: <br />
                 <span>
                   <MdCall className="icon" />
-                  +2779 985 8789
+                  +1 (213) 980 9687
                 </span>
               </p>
             </div>
