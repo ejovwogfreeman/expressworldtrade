@@ -226,3 +226,51 @@ td {
 td.td {
   min-width: 180px;
 }
+
+#edit-form {
+  width: 100%;
+  padding: 20px;
+  display: block;
+}
+
+#edit-form img {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  object-fit: cover;
+}
+
+#edit-form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#edit-form label {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#edit-form button {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.flex-me {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-me button {
+  background-color: red;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  padding: 10px;
+  cursor: pointer;
+}

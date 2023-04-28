@@ -10,7 +10,7 @@ import Deposits from "./components/Deposits";
 import Withdrawal from "./components/Withdrawal";
 import Transactions from "./components/Transactions";
 import Notfound from "./components/Notfound";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import UsersComponent from "./context/UsersContext";
 import UserComponent from "./context/UserContext";
 import ToastifyComponent from "./context/ToastifyContext";

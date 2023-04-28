@@ -37,6 +37,59 @@ export const getUser = async (token) => {
 };
 
 ////////////////////////////
+///////Get single user///////
+////////////////////////////
+
+export const getSingleUser = async (token, id) => {
+  const res = await fetch(
+    `https://expressworldtrade.onrender.com/api/users/single/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+    }
+  );
+  const user = await res.json();
+  return user;
+};
+
+////////////////////////////
+///////Update single user///////
+////////////////////////////
+
+export const updateSingleUser = async (token, userDetails, id) => {
+  const res = await fetch(
+    `https://expressworldtrade.onrender.com/api/users/update/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-token": token,
+      },
+      body: JSON.stringify(userDetails),
+    }
+  );
+  const user = await res.json();
+  return user;
+};
+
+////////////////////////////
+///////Update single user///////
+////////////////////////////
+
+export const deleteSingleUser = async (token, id) => {
+  await fetch(`https://expressworldtrade.onrender.com/api/users/delete/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "auth-token": token,
+    },
+  });
+};
+
+////////////////////////////
 ///////Get all users///////
 ////////////////////////////
 

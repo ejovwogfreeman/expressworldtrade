@@ -13,10 +13,11 @@
 
 // export default User;
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 // import loaderimg from "../assets/icons8-combo-chart.gif";
 import "../css/Home.css";
+import "../css/General.css";
 import Navbar from "./Navbar";
 import { UsersContext } from "../context/UsersContext";
 import { Button, Box, Popover, Typography, TextField } from "@mui/material";
@@ -24,103 +25,146 @@ import { UserContext } from "../context/UserContext";
 import { ToastifyContext } from "../context/ToastifyContext";
 import { userFund, getUsers } from "../data";
 import Loader from "./Loader";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { getSingleUser, updateSingleUser, deleteSingleUser } from "../data";
+import profilepic from "../assets/default.jpg";
+import { FaTelegramPlane } from "react-icons/fa";
 
 const User = () => {
+  let admin = JSON.parse(localStorage.getItem("user"));
+  const token = admin.token;
+  const navigate = useNavigate();
+  const params = useParams();
+  const id = params.id;
+
   const { users } = React.useContext(UsersContext);
+  const [user, setUser] = useState({});
+
+  const [loading, setLoading] = React.useState(false);
+
+  const [userDetails, setUserDetails] = React.useState({
+    name: "",
+    username: "",
+    email: "",
+    phoneNumber: "",
+    balance: "",
+  });
+
+  useEffect(() => {
+    const fetchSingleUser = async () => {
+      setLoading(true);
+      try {
+        const user = await getSingleUser(token, id);
+        setUser(user);
+        setUserDetails({
+          name: user.name,
+          username: user.username,
+          email: user.email,
+          phoneNumber: user.phoneNumber,
+          balance: user.balance,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    };
+
+    fetchSingleUser();
+  }, [params.id]);
 
   const [ToastifyState, setToastifyState] = React.useContext(ToastifyContext);
   const [usersState, setUsersState] = users;
 
   const [userState, setUserState] = React.useContext(UserContext);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await updateSingleUser(token, userDetails, id);
+    return setToastifyState({
+      ...ToastifyState,
+      message: "Profile Updated Successfully",
+      variant: "success",
+      open: true,
+    });
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteSingleUser(token, id);
+    navigate("/users");
+    return setToastifyState({
+      ...ToastifyState,
+      message: "User Deleted Successfully",
+      variant: "success",
+      open: true,
+    });
+  };
+
   return (
     <div className="home-container">
       <Navbar />
-      <h1>User's Profile</h1>
-      {/* <div className="general-container">
-        <Background text="EDIT PROFILE" />
-        <div className="body">
-          <form onSubmit={handleSubmit} className="signup-form mb-5">
-            <h2>EDIT PROFILE</h2>
-            <div
-              style={{
-                flexDirection: "column",
-                width: "200px",
-                border: "1px solid rgba(0, 0, 0, 0.3)",
-                padding: "0px",
-              }}
-            >
-              <img
-                src={
-                  userDetails.file.length > 0
-                    ? URL.createObjectURL(userDetails.file[0])
-                    : UserState.profileImage &&
-                      UserState.profileImage.length > 0
-                    ? `https://expressworldtrade.onrender.com/${UserState.profileImage[0].link}`
-                    : profilepic
-                }
-                alt=""
-                style={{ width: "100%", margin: "0px" }}
-              />
-              <input
-                type="file"
-                accept="image/*"
-                hidden
-                name="img"
-                id="img"
-                onChange={(e) =>
-                  setUserDetails({
-                    ...userDetails,
-                    file: e.target.files,
-                  })
-                }
-              />
-              <label
-                for="img"
-                style={{
-                  margin: "0px",
-                  width: "100%",
-                  borderRadius: "0px",
-                  color: "white",
-                  background: "var(--secondary)",
-                  padding: 20,
-                  cursor: "pointer",
-                }}
-              >
-                Change Image
-              </label>
-            </div>
-            <div>
+      <div className="flex-me">
+        <h1 style={{ marginBottom: "10px" }}>USER DETAILS</h1>
+        {userDetails.name === "" ? (
+          ""
+        ) : (
+          <button onClick={handleDelete}>DELETE USER</button>
+        )}
+      </div>
+      {userDetails.name === "" ? (
+        <h1>User has been deleted.</h1>
+      ) : (
+        <div className="">
+          <div className="">
+            <form onSubmit={handleSubmit} id="edit-form">
+              <h2>EDIT USER DETAILS</h2>
+
+              {/* <img
+              src={
+                `https://expressworldtrade.onrender.com/${user.profileImage[0].link}`
+                  ? `https://expressworldtrade.onrender.com/${user.profileImage[0].link}`
+                  : profilepic
+              }
+              alt=""
+            /> */}
+              <label>Full Name</label>
               <input
                 type="text"
+                readOnly
                 value={userDetails.name}
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, name: e.target.value })
                 }
                 placeholder="Enter your Name"
               />
+
+              <label>User Name</label>
               <input
                 type="text"
                 value={userDetails.username}
+                readOnly
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, username: e.target.value })
                 }
                 placeholder="Enter your Username"
               />
-            </div>
-            <div>
+
+              <label>Email</label>
               <input
                 type="email"
                 value={userDetails.email}
+                readOnly
                 onChange={(e) =>
                   setUserDetails({ ...userDetails, email: e.target.value })
                 }
                 placeholder="Enter your Email"
               />
+
+              <label>Phone Number</label>
               <input
                 type="text"
                 value={userDetails.phoneNumber}
+                readOnly
                 onChange={(e) =>
                   setUserDetails({
                     ...userDetails,
@@ -129,14 +173,28 @@ const User = () => {
                 }
                 placeholder="Enter your Phone Number"
               />
-            </div>
-            <button disabled={loading}>
-              <FaTelegramPlane />
-              &nbsp;{loading ? "LOADING..." : "UPDATE PROFILE"}
-            </button>
-          </form>
+
+              <label>Balance</label>
+              <input
+                type="text"
+                value={userDetails.balance}
+                onChange={(e) =>
+                  setUserDetails({
+                    ...userDetails,
+                    balance: e.target.value,
+                  })
+                }
+                placeholder="Edit Balance"
+              />
+
+              <button disabled={loading}>
+                <FaTelegramPlane />
+                &nbsp;{loading ? "LOADING..." : "UPDATE PROFILE"}
+              </button>
+            </form>
+          </div>
         </div>
-      </div>*/}
+      )}
     </div>
   );
 };
