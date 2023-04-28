@@ -231,9 +231,7 @@ const adminUpdateUser = async (req, res) => {
 //////////////admin deleting a user///////////////
 //////////////////////////////////////////////////
 const adminDeleteUser = async (req, res) => {
-  console.log("before deleted user");
   await User.findByIdAndDelete(req.params.id);
-  console.log("deleted user");
   await res.status(200).send({ message: "user post deleted successfully" });
 };
 
