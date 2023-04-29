@@ -48,6 +48,7 @@ const User = () => {
     email: "",
     phoneNumber: "",
     balance: "",
+    profit: "",
   });
 
   useEffect(() => {
@@ -185,6 +186,19 @@ const User = () => {
                   })
                 }
                 placeholder="Edit Balance"
+              />
+
+              <label>Add Profit</label>
+              <input
+                type="text"
+                value={userDetails.profit}
+                onChange={(e) =>
+                  setUserDetails({
+                    ...userDetails,
+                    profit: e.target.value,
+                  })
+                }
+                placeholder="Add Profit"
               />
 
               <button disabled={loading}>

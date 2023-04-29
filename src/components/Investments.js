@@ -47,6 +47,7 @@ const Investments = () => {
                           <td>&nbsp;Investment ID</td>
                           <td>&nbsp;Investment Plan</td>
                           <td>&nbsp;Amount Invested</td>
+                          <td>&nbsp;Required Profit</td>
                           <td>&nbsp;Status</td>
                         </thead>
                         {investmentState
@@ -67,6 +68,16 @@ const Investments = () => {
                                   <td>{x.plan}</td>
                                   <td>{x.amount}</td>
                                   <td>
+                                    {x.plan === "Mini Plan" &&
+                                      `$ ${Math.floor((25 * x.amount) / 100)}`}
+                                    {x.plan === "Silver Plan" &&
+                                      `$ ${Math.floor((35 * x.amount) / 100)}`}
+                                    {x.plan === "Gold Plan" &&
+                                      `$ ${Math.floor((45 * x.amount) / 100)}`}
+                                    {x.plan === "Platinum Plan" &&
+                                      `$ ${Math.floor((55 * x.amount) / 100)}`}
+                                  </td>
+                                  <td>
                                     <small
                                       style={{
                                         padding: "5px 10px",
@@ -74,17 +85,10 @@ const Investments = () => {
                                         fontSize: "10px",
                                         color: "white",
                                         textTransform: "uppercase",
-                                        background:
-                                          x.status === "pending"
-                                            ? "gold"
-                                            : x.status === "confirmed"
-                                            ? "green"
-                                            : x.status === "processing"
-                                            ? "orange"
-                                            : "red",
+                                        background: "green",
                                       }}
                                     >
-                                      {x.status}
+                                      {x.status === "pending" && "invested"}
                                     </small>
                                   </td>
                                 </tr>
