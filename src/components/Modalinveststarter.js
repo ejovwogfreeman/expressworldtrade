@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/Modal.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaTelegramPlane } from "react-icons/fa";
@@ -10,7 +10,7 @@ import { makeInvestment, getUser } from "../data";
 
 const Modalinveststarter = () => {
   const [ToastifyState, setToastifyState] = React.useContext(ToastifyContext);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = useState(false);
   const [UserState, setUserState] = React.useContext(UserContext);
   const params = useParams();
   const navigate = useNavigate();
@@ -64,6 +64,26 @@ const Modalinveststarter = () => {
     }
   }, [params]);
 
+  const [balance, setBalance] = useState(null);
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      setLoading(true);
+      try {
+        const user = await getUser(UserState.token);
+        console.log(user);
+        setBalance(user.balance);
+        setInvest(user.investments.length);
+        setWithdraw(user.withdrawal.length);
+      } catch (error) {
+        console.log(error);
+      }
+      setLoading(false);
+    };
+
+    fetchBalance();
+  }, [balance]);
+
   return (
     <div className="modal-container mb-5">
       <Link to="/investment-package" className="nav-icon">
@@ -73,7 +93,7 @@ const Modalinveststarter = () => {
         <h2>Investment On {planDetails.plan}</h2>
         <div>
           <h3>Your Balance</h3>
-          <p style={{ color: "green" }}>${UserState.balance}</p>
+          <p style={{ color: "green" }}>${balance}</p>
         </div>
         <form>
           <h3>Investment Range</h3>
@@ -144,10 +164,10 @@ const Modalinveststarter = () => {
             >
               <GiCheckMark />
               &nbsp;Comission -{" "}
-              {planDetails.plan.toLowerCase().includes("mini") && <>150%</>}
-              {planDetails.plan.toLowerCase().includes("silver") && <>200%</>}
-              {planDetails.plan.toLowerCase().includes("gold") && <>250%</>}
-              {planDetails.plan.toLowerCase().includes("platinum") && <>300%</>}
+              {planDetails.plan.toLowerCase().includes("mini") && <>25%</>}
+              {planDetails.plan.toLowerCase().includes("silver") && <>35%</>}
+              {planDetails.plan.toLowerCase().includes("gold") && <>45%</>}
+              {planDetails.plan.toLowerCase().includes("platinum") && <>55%</>}
             </p>
             <p
               style={{

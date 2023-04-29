@@ -31,6 +31,9 @@ const Dashboard = () => {
   const [withdrawalState, setWithdrawalState] = withdrawal;
 
   const [balance, setBalance] = useState(null);
+  const [profit, setProfit] = useState(null);
+  const [invest, setInvest] = useState(null);
+  const [withdraw, setWithdraw] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,9 +43,13 @@ const Dashboard = () => {
       setLoading(true);
       try {
         const user = await getUser(UserState.token);
+        console.log(user);
         setBalance(user.balance);
+        setProfit(user.profit);
+        setInvest(user.investments.length);
+        setWithdraw(user.withdrawal.length);
       } catch (error) {
-        setError(error);
+        console.log(error);
       }
       setLoading(false);
     };
@@ -101,7 +108,6 @@ const Dashboard = () => {
                     <div className="card">
                       <div className="card-head">
                         <FaRegMoneyBillAlt className="icon" />
-                        {/* <h5>$ {UserState.balance}</h5> */}
                         <h5>$ {balance}</h5>
                       </div>
                       <div className="card-tail">
@@ -111,9 +117,19 @@ const Dashboard = () => {
                     </div>
                     <div className="card">
                       <div className="card-head">
+                        <FaRegMoneyBillAlt className="icon" />
+                        <h5>$ {profit}</h5>
+                      </div>
+                      <div className="card-tail">
+                        <small>All Time profits</small>
+                        <BsArrowRightCircleFill />
+                      </div>
+                    </div>
+                    <div className="card">
+                      <div className="card-head">
                         <FaRecycle className="icon" />
                         <h5>
-                          {investmentState.length}
+                          {invest}
                           {/* $
                           {withdrawalState && withdrawalState.length > 0
                             ? withdrawalState.reduce(
@@ -132,7 +148,7 @@ const Dashboard = () => {
                       <div className="card-head">
                         <FaRecycle className="icon" />
                         <h5>
-                          {withdrawalState.length}
+                          {withdraw}
                           {/* $
                           {withdrawalState && withdrawalState.length > 0
                             ? withdrawalState.reduce(
