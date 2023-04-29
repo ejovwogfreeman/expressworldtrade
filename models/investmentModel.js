@@ -22,7 +22,7 @@ const investmentSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "pending",
-      enum: ["invested", "closed"],
+      enum: ["pending", "processing", "confirmed", "failed", "declined"],
     },
   },
   {

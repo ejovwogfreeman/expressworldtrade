@@ -370,7 +370,7 @@ const userInvest = async (req, res) => {
 
   const transactionOptions = {
     type: "investment",
-    status: "invested",
+    status: "pending",
   };
 
   let transactionId;
