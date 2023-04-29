@@ -212,11 +212,11 @@ const adminGetUser = async (req, res) => {
 const adminUpdateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, userName, email, phoneNumber, balance } = req.body;
+    const { name, userName, email, phoneNumber, balance, profit } = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { $set: { name, userName, email, phoneNumber, balance } },
+      { $set: { name, userName, email, phoneNumber, balance, profit } },
       { new: true }
     );
 
