@@ -6,9 +6,9 @@ import Nav from "../components/Nav";
 import { Helmet } from "react-helmet";
 import cryp from "../assets/bank.png";
 import cryp1 from "../assets/cryimg1.jpg";
-import cryp2 from "../assets/cryimg2.jpg";
-// import cryp3 from '../assets/cryimg3.jpg'
-import cryp4 from "../assets/cryimg4.jpg";
+import cryp2 from "../assets/westernunion.png";
+import cryp3 from "../assets/etherium.png";
+import cryp4 from "../assets/moneygram.png";
 // import Modalbankwithdraw from '../components/Modalbankwithdraw'
 // import Modalbtcwithdraw from '../components/Modalbtcwithdraw'
 // import Modallunowithdraw from '../components/Modallunowithdraw'
@@ -59,7 +59,7 @@ const Withdraw = () => {
             <h3>ETHERIUM</h3>
             <div>
               <img
-                src={cryp1}
+                src={cryp3}
                 alt=""
                 width="100px"
                 style={{ margin: "20px" }}
@@ -77,7 +77,7 @@ const Withdraw = () => {
             <h3>WESTERN UNION</h3>
             <div>
               <img
-                src={cryp1}
+                src={cryp2}
                 alt=""
                 width="100px"
                 style={{ margin: "20px" }}
@@ -95,7 +95,7 @@ const Withdraw = () => {
             <h3>MONEY GRAM</h3>
             <div>
               <img
-                src={cryp1}
+                src={cryp4}
                 alt=""
                 width="100px"
                 style={{ margin: "20px" }}
