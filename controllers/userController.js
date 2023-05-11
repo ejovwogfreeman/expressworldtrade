@@ -17,14 +17,31 @@ const registerUser = async (req, res) => {
   // destructuring all information from the object
   const { referral, username, name, email, phoneNumber, password } = req.body;
 
+  // if (referral) {
+  //   const referredUser = await User.findOne({ referralId: referral });
+  //   let referralCount = referredUser.referrals;
+  //   referralCount += 1;
+  //   await User.findOneAndUpdate(
+  //     { referralId: referral },
+  //     { referrals: referralCount }
+  //   );
+  // }
+
   if (referral) {
-    const referredUser = await User.findOne({ referralId: referral });
-    let referralCount = referredUser.referrals;
-    referralCount += 1;
-    await User.findOneAndUpdate(
-      { referralId: referral },
-      { referrals: referralCount }
-    );
+    try {
+      const referredUser = await User.findOne({ referralId: referral });
+      if (referredUser) {
+        let referralCount = referredUser.referrals + 1;
+        await User.findOneAndUpdate(
+          { referralId: referral },
+          { referrals: referralCount }
+        );
+      } else {
+        console.log("Referred user not found");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   }
 
   // validate inputs
