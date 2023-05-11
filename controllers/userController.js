@@ -14,24 +14,13 @@ const sendEmail = require("../helpers/email");
 ///////////////////////////
 
 const registerUser = async (req, res) => {
-  // destructuring all information from the object
-  const { referral, username, name, email, phoneNumber, password } = req.body;
+  try {
+    const { referral, username, name, email, phoneNumber, password } = req.body;
 
-  // if (referral) {
-  //   const referredUser = await User.findOne({ referralId: referral });
-  //   let referralCount = referredUser.referrals;
-  //   referralCount += 1;
-  //   await User.findOneAndUpdate(
-  //     { referralId: referral },
-  //     { referrals: referralCount }
-  //   );
-  // }
-
-  if (referral) {
-    try {
+    if (referral) {
       const referredUser = await User.findOne({ referralId: referral });
       if (referredUser) {
-        let referralCount = referredUser.referrals + 1;
+        const referralCount = (referredUser.referrals ?? 0) + 1; // Use 0 as the default value if referrals is null or undefined
         await User.findOneAndUpdate(
           { referralId: referral },
           { referrals: referralCount }
@@ -39,51 +28,122 @@ const registerUser = async (req, res) => {
       } else {
         console.log("Referred user not found");
       }
-    } catch (error) {
-      console.error("An error occurred:", error);
     }
-  }
 
-  // validate inputs
-  if (!username || !name || !email || !phoneNumber || !password) {
-    res.status(400).json({ message: "please add all fields", error: true });
-  }
+    if (!username || !name || !email || !phoneNumber || !password) {
+      return res
+        .status(400)
+        .json({ message: "Please add all fields", error: true });
+    }
 
-  // check if user exists
-  const userExists = await User.findOne({ email });
-  if (userExists) {
-    res.status(400).json({ message: "User already Exists", error: true });
-    return false;
-  }
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res
+        .status(400)
+        .json({ message: "User already exists", error: true });
+    }
 
-  // hash password
-  const salt = await bcrypt.genSalt(10);
-  const hashedpassword = await bcrypt.hash(password, salt);
-  const referralId = refCode.generate({ length: 5 }).toString();
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const referralId = refCode.generate({ length: 5 }).toString();
 
-  // create new user
-  const user = new User({
-    referralId,
-    username,
-    name,
-    email,
-    phoneNumber,
-    password: hashedpassword,
-  });
-
-  // saving the user
-  await user.save();
-
-  if (user) {
-    const { password, ...others } = user._doc;
-    res.status(200).json({
-      ...others,
-      token: accessToken(user),
+    const user = new User({
+      referralId,
+      username,
+      name,
+      email,
+      phoneNumber,
+      password: hashedPassword,
     });
-  }
 
-  await sendEmail(email, "Welcome On Board", "register.html");
+    await user.save();
+
+    if (user) {
+      const { password, ...others } = user.toObject();
+      return res.status(200).json({
+        ...others,
+        token: accessToken(user),
+      });
+    }
+
+    await sendEmail(email, "Welcome On Board", "register.html");
+  } catch (error) {
+    console.error("An error occurred:", error);
+    res.status(500).send(error.message);
+  }
 };
+
+// const registerUser = async (req, res) => {
+//   // destructuring all information from the object
+//   const { referral, username, name, email, phoneNumber, password } = req.body;
+
+//   // if (referral) {
+//   //   const referredUser = await User.findOne({ referralId: referral });
+//   //   let referralCount = referredUser.referrals;
+//   //   referralCount += 1;
+//   //   await User.findOneAndUpdate(
+//   //     { referralId: referral },
+//   //     { referrals: referralCount }
+//   //   );
+//   // }
+
+//   if (referral) {
+//     try {
+//       const referredUser = await User.findOne({ referralId: referral });
+//       if (referredUser) {
+//         let referralCount = referredUser.referrals + 1;
+//         await User.findOneAndUpdate(
+//           { referralId: referral },
+//           { referrals: referralCount }
+//         );
+//       } else {
+//         console.log("Referred user not found");
+//       }
+//     } catch (error) {
+//       console.error("An error occurred:", error);
+//     }
+//   }
+
+//   // validate inputs
+//   if (!username || !name || !email || !phoneNumber || !password) {
+//     res.status(400).json({ message: "please add all fields", error: true });
+//   }
+
+//   // check if user exists
+//   const userExists = await User.findOne({ email });
+//   if (userExists) {
+//     res.status(400).json({ message: "User already Exists", error: true });
+//     return false;
+//   }
+
+//   // hash password
+//   const salt = await bcrypt.genSalt(10);
+//   const hashedpassword = await bcrypt.hash(password, salt);
+//   const referralId = refCode.generate({ length: 5 }).toString();
+
+//   // create new user
+//   const user = new User({
+//     referralId,
+//     username,
+//     name,
+//     email,
+//     phoneNumber,
+//     password: hashedpassword,
+//   });
+
+//   // saving the user
+//   await user.save();
+
+//   if (user) {
+//     const { password, ...others } = user._doc;
+//     res.status(200).json({
+//       ...others,
+//       token: accessToken(user),
+//     });
+//   }
+
+//   await sendEmail(email, "Welcome On Board", "register.html");
+// };
 
 /////////////////////////
 ////////login user///////
@@ -112,14 +172,28 @@ const loginUser = async (req, res) => {
 ///////get one user////////
 ///////////////////////////
 
+// const getUser = async (req, res) => {
+//   let user = await User.findById(req.user._id);
+//   console.log(user);
+//   const { ...others } = user._doc;
+//   res.send({
+//     ...others,
+//     token: accessToken(user),
+//   });
+// };
+
 const getUser = async (req, res) => {
-  let user = await User.findById(req.user._id);
-  // console.log(user);
-  const { ...others } = user._doc;
-  res.send({
-    ...others,
-    token: accessToken(user),
-  });
+  try {
+    const user = await User.findById(req.user._id);
+
+    const { _id, __v, ...others } = user.toObject();
+    res.send({
+      ...others,
+      token: accessToken(user),
+    });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
 };
 
 //////////////////////////
