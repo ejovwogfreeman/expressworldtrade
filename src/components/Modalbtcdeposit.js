@@ -97,13 +97,13 @@ const Modalbtcdeposit = () => {
           </h3>
           <p>
             {depositDetails.method === "Bitcoin" && (
-              <>bc1qy0532ehkgvenglngge8qhafjqv3kwn8mxaaaz5 </>
+              <>3KeLN8uMCWTd3yTkxEG1c2vKqr7eQpasiJ</>
             )}
             {depositDetails.method === "Tether" && (
-              <>0x3bb18068067a3357c4A58c661b7A6d6A477768B8</>
+              <>TRU63JZDAA3UCQFkKD8kKDcFVNM5Jt2auX</>
             )}
             {depositDetails.method === "Etherium" && (
-              <>0x3bb18068067a3357c4A58c661b7A6d6A477768B8</>
+              <>TRU63JZDAA3UCQFkKD8kKDcFVNM5Jt2auX</>
             )}
             {depositDetails.method === "Luno" && (
               <>3Nww1SGjVnrm4GFy2RHDxv3DZpNaYTrrbx</>

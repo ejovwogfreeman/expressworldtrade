@@ -51,7 +51,7 @@ const Nav = () => {
           </span>
           <span className="left">
             <MdCall className="icon" />
-            +1 (307) 221 2127
+            +1 (240) 462 9128
           </span>
         </div>
       ) : null}
