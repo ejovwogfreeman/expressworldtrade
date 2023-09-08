@@ -47,7 +47,7 @@ const Contact = () => {
                 Call us: <br />
                 <span>
                   <MdCall className="icon" />
-                  +1 (240) 462 9128
+                  +1 (516) 806 8173
                 </span>
               </p>
             </div>

@@ -56,7 +56,7 @@ const Navbar2 = () => {
           </span>
           <span className="left">
             <MdCall className="icon" />
-            +1 (213) 111 - 111
+            +1 (516) 806 8173
           </span>
         </div>
         <div className="acc">

@@ -97,7 +97,7 @@ const Modalbtcdeposit = () => {
           </h3>
           <p>
             {depositDetails.method === "Bitcoin" && (
-              <>3KeLN8uMCWTd3yTkxEG1c2vKqr7eQpasiJ</>
+              <>36rBhCWtY3zfke5tSu1WFz379moRNsnHsX</>
             )}
             {depositDetails.method === "Tether" && (
               <>TRU63JZDAA3UCQFkKD8kKDcFVNM5Jt2auX</>
