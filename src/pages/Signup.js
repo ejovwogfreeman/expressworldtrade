@@ -51,7 +51,7 @@ const Signup = () => {
         open: true,
       });
     }
-    localStorage.setItem("user", JSON.stringify(register));
+    sessionStorage.setItem("user", JSON.stringify(register));
     setUserState(register);
     setToastifyState({
       ...ToastifyState,

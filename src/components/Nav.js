@@ -15,14 +15,14 @@ const Nav = () => {
 
   const navigate = useNavigate();
   const Auth = () => {
-    let user = JSON.parse(localStorage.getItem("user"));
+    let user = JSON.parse(sessionStorage.getItem("user"));
     return user;
   };
 
   const userAuth = Auth();
 
   const logout = () => {
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     setUserState({});
     navigate("/");
   };

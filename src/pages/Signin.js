@@ -43,7 +43,7 @@ const Signup = () => {
       });
     }
 
-    localStorage.setItem("user", JSON.stringify(login));
+    sessionStorage.setItem("user", JSON.stringify(login));
     setUserState(login);
     setToastifyState({
       ...ToastifyState,

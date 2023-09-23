@@ -22,7 +22,7 @@ const Muinavbar = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     setUserState({});
     setOpenDrawer(false);
     navigate("/");

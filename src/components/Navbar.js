@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     setUserState({});
     navigate("/");
   };

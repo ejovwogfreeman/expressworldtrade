@@ -73,7 +73,7 @@ const Dashboard = () => {
   //     });
   //     return navigate("/login");
   //   }
-  //   localStorage.setItem("user", JSON.stringify(user));
+  //   sessionStorage.setItem("user", JSON.stringify(user));
   //   setUserState(user);
 
   //   setLoading(false);
