@@ -66,84 +66,12 @@ const registerUser = async (req, res) => {
       });
     }
 
-    await sendEmail(email, "Welcome On Board", "register.html");
+    // await sendEmail(email, "Welcome On Board", "register.html");
   } catch (error) {
     console.error("An error occurred:", error);
     res.status(500).send(error.message);
   }
 };
-
-// const registerUser = async (req, res) => {
-//   // destructuring all information from the object
-//   const { referral, username, name, email, phoneNumber, password } = req.body;
-
-//   // if (referral) {
-//   //   const referredUser = await User.findOne({ referralId: referral });
-//   //   let referralCount = referredUser.referrals;
-//   //   referralCount += 1;
-//   //   await User.findOneAndUpdate(
-//   //     { referralId: referral },
-//   //     { referrals: referralCount }
-//   //   );
-//   // }
-
-//   if (referral) {
-//     try {
-//       const referredUser = await User.findOne({ referralId: referral });
-//       if (referredUser) {
-//         let referralCount = referredUser.referrals + 1;
-//         await User.findOneAndUpdate(
-//           { referralId: referral },
-//           { referrals: referralCount }
-//         );
-//       } else {
-//         console.log("Referred user not found");
-//       }
-//     } catch (error) {
-//       console.error("An error occurred:", error);
-//     }
-//   }
-
-//   // validate inputs
-//   if (!username || !name || !email || !phoneNumber || !password) {
-//     res.status(400).json({ message: "please add all fields", error: true });
-//   }
-
-//   // check if user exists
-//   const userExists = await User.findOne({ email });
-//   if (userExists) {
-//     res.status(400).json({ message: "User already Exists", error: true });
-//     return false;
-//   }
-
-//   // hash password
-//   const salt = await bcrypt.genSalt(10);
-//   const hashedpassword = await bcrypt.hash(password, salt);
-//   const referralId = refCode.generate({ length: 5 }).toString();
-
-//   // create new user
-//   const user = new User({
-//     referralId,
-//     username,
-//     name,
-//     email,
-//     phoneNumber,
-//     password: hashedpassword,
-//   });
-
-//   // saving the user
-//   await user.save();
-
-//   if (user) {
-//     const { password, ...others } = user._doc;
-//     res.status(200).json({
-//       ...others,
-//       token: accessToken(user),
-//     });
-//   }
-
-//   await sendEmail(email, "Welcome On Board", "register.html");
-// };
 
 /////////////////////////
 ////////login user///////
@@ -171,16 +99,6 @@ const loginUser = async (req, res) => {
 ///////////////////////////
 ///////get one user////////
 ///////////////////////////
-
-// const getUser = async (req, res) => {
-//   let user = await User.findById(req.user._id);
-//   console.log(user);
-//   const { ...others } = user._doc;
-//   res.send({
-//     ...others,
-//     token: accessToken(user),
-//   });
-// };
 
 const getUser = async (req, res) => {
   try {
@@ -403,57 +321,6 @@ const userInvest = async (req, res) => {
       error: true,
     });
 
-  // const investOptions = {
-  //   amount: amount,
-  //   plan: plan,
-  // };
-
-  // const transactionOptions = {
-  //   type: "investment",
-  //   status: "pending",
-  // };
-
-  // let transactionId;
-  // let investmentId;
-
-  // Investment.create(investOptions, (err, investment) => {
-  //   if (err) return res.status(400).json(err);
-
-  //   investmentId = investment.id;
-  //   investment.user.id = _id;
-  //   investment.user.email = email;
-  //   investment.user.username = username;
-
-  //   Transaction.create(transactionOptions, (err, transaction) => {
-  //     if (err) return res.status(400).json(err);
-
-  //     transactionId = transaction.id;
-  //     transaction.transaction = investment.id;
-  //     transaction.user.id = _id;
-  //     transaction.user.email = email;
-  //     transaction.user.username = username;
-
-  //     User.findById(_id, (err, user) => {
-  //       if (err) return res.status(400).json(err);
-
-  //       user.balance = user.balance - amount;
-
-  //       let investments = user.investments;
-  //       investments.push(investmentId);
-  //       user.investments = investments;
-
-  //       let transactions = user.transactions;
-  //       transactions.push(transactionId);
-  //       user.transactions = transactions;
-
-  //       user.save();
-  //     });
-
-  //     transaction.save();
-  //   });
-  //   investment.save();
-  // });
-
   const investOptions = {
     amount: amount,
     plan: plan,
@@ -520,57 +387,6 @@ const userDeposit = async (req, res) => {
       filesArray.push(file);
     });
 
-    // create new deposit
-    // const depositOptions = {
-    //   amount,
-    //   mode,
-    //   proof: filesArray,
-    //   status: "pending",
-    // };
-
-    // const transactionOptions = {
-    //   type: "deposit",
-    //   status: "pending",
-    // };
-
-    // let transactionId;
-    // let depositId;
-
-    // Deposit.create(depositOptions, (err, deposit) => {
-    //   if (err) return res.status(400).json(err);
-
-    //   depositId = deposit.id;
-    //   deposit.user.id = _id;
-    //   deposit.user.email = email;
-    //   deposit.user.username = username;
-
-    //   Transaction.create(transactionOptions, (err, transaction) => {
-    //     if (err) return res.status(400).json(err);
-
-    //     transactionId = transaction.id;
-    //     transaction.transaction = depositId;
-    //     transaction.user.id = _id;
-    //     transaction.user.email = email;
-    //     transaction.user.username = username;
-
-    //     User.findById(_id, (err, user) => {
-    //       if (err) return res.status(400).json(err);
-
-    //       let deposits = user.deposits;
-    //       deposits.push(depositId);
-
-    //       let transactions = user.transactions;
-    //       transactions.push(transactionId);
-    //       user.transactions = transactions;
-
-    //       user.save();
-    //     });
-
-    //     transaction.save();
-    //   });
-    //   deposit.save();
-    // });
-
     const depositOptions = {
       amount,
       mode,
@@ -632,58 +448,6 @@ const userWithdraw = async (req, res) => {
       .status(400)
       .json({ message: "You do not have sufficient balance.", error: true });
   }
-
-  // const withdrawOptions = {
-  //   amount: amount,
-  //   accountDetails: address,
-  //   mode: method,
-  // };
-
-  // const transactionOptions = {
-  //   type: "withdrawal",
-  //   status: "pending",
-  // };
-
-  // let transactionId;
-  // let withdrawId;
-
-  // Withdrawal.create(withdrawOptions, (err, withdraw) => {
-  //   if (err) return res.status(400).json({ message: err.message, error: true });
-
-  //   withdrawId = withdraw.id;
-  //   withdraw.user.id = _id;
-  //   withdraw.user.email = email;
-  //   withdraw.user.username = username;
-
-  //   Transaction.create(transactionOptions, (err, transaction) => {
-  //     if (err)
-  //       return res.status(400).json({ message: err.message, error: true });
-
-  //     transactionId = transaction.id;
-  //     transaction.transaction = withdraw.id;
-  //     transaction.user.id = _id;
-  //     transaction.user.email = email;
-  //     transaction.user.username = username;
-
-  //     User.findById(_id, (err, user) => {
-  //       if (err)
-  //         return res.status(400).json({ message: err.message, error: true });
-
-  //       let withdraws = user.withdrawal;
-  //       withdraws.push(withdrawId);
-  //       user.withdrawal = withdraws;
-
-  //       let transactions = user.transactions;
-  //       transactions.push(transactionId);
-  //       user.transactions = transactions;
-
-  //       user.save();
-  //     });
-
-  //     transaction.save();
-  //   });
-  //   withdraw.save();
-  // });
 
   const withdrawOptions = {
     amount: amount,
