@@ -17,8 +17,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const corsOptions = {
-  origin: "*",
-  credentials: true, //access-control-allow-credentials:true
+  origin: ["https://expressfinancetrade.site", "*"],
+  credentials: true,
   optionSuccessStatus: 200,
 };
 
