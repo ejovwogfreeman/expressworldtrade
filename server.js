@@ -17,7 +17,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 const corsOptions = {
-  origin: ["https://expressfinancetrade.site", "*"],
+  origin: "*",
   credentials: true,
   optionSuccessStatus: 200,
 };
